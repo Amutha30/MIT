@@ -2877,4 +2877,332 @@ button, input, select, textarea {
     gap: 0.5rem;
     text-align: center;
   }
+
+  .queries-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+/* ===================================================================
+   PARTICIPANT QUERY PORTAL & HELPDESK STYLES
+   =================================================================== */
+
+.queries-section {
+  padding: 5rem 0;
+  position: relative;
+  z-index: 3;
+}
+
+.queries-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.query-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.submit-query-card {
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.query-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.query-header-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--cyan-subtle);
+  border: 1px solid var(--border-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--cyan-primary);
+  flex-shrink: 0;
+}
+
+.query-card-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.query-card-header p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.query-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.query-tabs-header {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.8rem;
+}
+
+.query-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.query-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.query-tab-btn.active {
+  color: var(--cyan-primary);
+  background: var(--cyan-subtle);
+  border-color: var(--border-cyan);
+}
+
+.feed-count-badge {
+  background: var(--cyan-primary);
+  color: #05070e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.12rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.query-feed-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.feed-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all var(--transition-fast);
+}
+
+.feed-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-cyan);
+}
+
+.feed-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.feed-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feed-author-name {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.feed-author-college {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.feed-category-pill {
+  font-family: var(--font-tech);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: var(--cyan-subtle);
+  color: var(--cyan-primary);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.feed-subject {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.feed-question {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.feed-official-reply {
+  background: rgba(0, 240, 255, 0.06);
+  border-left: 3px solid var(--cyan-primary);
+  padding: 0.85rem 1.1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.reply-badge {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cyan-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.reply-text {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.feed-meta-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: var(--font-tech);
+  padding-top: 0.3rem;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.faq-item.active {
+  border-color: var(--border-cyan);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 1.1rem 1.3rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 0.8rem;
+}
+
+.faq-icon {
+  color: var(--cyan-primary);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 1.3rem 1.2rem;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* Urgent WhatsApp Banner */
+.urgent-helpdesk-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.urgent-icon {
+  font-size: 1.8rem;
+  color: var(--green-accent);
+  flex-shrink: 0;
+}
+
+.urgent-text {
+  flex: 1;
+}
+
+.urgent-text strong {
+  font-size: 0.9rem;
+  color: #ffffff;
+  display: block;
+}
+
+.urgent-text p {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+

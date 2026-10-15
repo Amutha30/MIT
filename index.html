@@ -50,6 +50,7 @@
         <a href="#vtu-spotlight" class="nav-link highlight" data-nav="vtu-spotlight">VTU Capstone Expo</a>
         <a href="#schedule-section" class="nav-link" data-nav="schedule-section">Schedule</a>
         <a href="#venue-section" class="nav-link" data-nav="venue-section">Venue & Reach</a>
+        <a href="#queries-section" class="nav-link" data-nav="queries-section">Queries & Helpdesk</a>
       </nav>
 
       <div class="nav-actions">
@@ -87,6 +88,10 @@
     </a>
     <a href="#schedule-section" class="dot-item" data-slide="4" title="2-Day Schedule">
       <span class="dot-label">05 Schedule</span>
+      <span class="dot-pip"></span>
+    </a>
+    <a href="#queries-section" class="dot-item" data-slide="5" title="Helpdesk & Queries">
+      <span class="dot-label">06 Queries</span>
       <span class="dot-pip"></span>
     </a>
   </div>
@@ -733,6 +738,121 @@
         </div>
       </div>
     </section>
+
+    <!-- ======================================================== -->
+    <!-- PARTICIPANT QUERY PORTAL & HELPDESK -->
+    <!-- ======================================================== -->
+    <section class="queries-section" id="queries-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow"><i class="fa-solid fa-headset"></i> 24x7 CONCLAVE HELPDESK</span>
+          <h2 class="section-heading">Participant Query Portal</h2>
+          <p class="section-subtext">
+            Have questions regarding the 42-Hour Hackathon rules, VTU Capstone paper publication, travel to Kundapura, or event logistics? Post your query below or browse answered questions.
+          </p>
+        </div>
+
+        <div class="queries-grid">
+          <!-- Left Column: Submit Query Form -->
+          <div class="query-card submit-query-card">
+            <div class="query-card-header">
+              <div class="query-header-icon"><i class="fa-solid fa-pen-nib"></i></div>
+              <div>
+                <h3>Ask a Question</h3>
+                <p>MITK Coordinators typically respond within 15–30 minutes</p>
+              </div>
+            </div>
+
+            <form id="participantQueryForm" class="query-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="queryAuthor">Your Full Name <span class="req">*</span></label>
+                  <input type="text" id="queryAuthor" name="queryAuthor" placeholder="e.g. Priya Nayak" required>
+                </div>
+                <div class="form-group">
+                  <label for="queryCollege">College / Institute <span class="req">*</span></label>
+                  <input type="text" id="queryCollege" name="queryCollege" placeholder="e.g. NMAMIT Nitte / MITK" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="queryContact">Email or WhatsApp Number <span class="req">*</span></label>
+                  <input type="text" id="queryContact" name="queryContact" placeholder="e.g. 9845012345 or priya@gmail.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="queryCategory">Query Category <span class="req">*</span></label>
+                  <select id="queryCategory" name="queryCategory" required>
+                    <option value="42-Hour Hackathon">⚡ 42-Hour Hackathon (HackOrbit)</option>
+                    <option value="VTU 4th-Year Capstone">🎓 VTU 4th-Year Capstone & Publication</option>
+                    <option value="Web-a-thon & Mobile-a-thon">💻 Web-a-thon / Mobile-a-thon</option>
+                    <option value="E-Sports & Gaming">🎮 E-Sports (BGMI / Valorant)</option>
+                    <option value="Accommodation & Travel">🏨 Accommodation, Food & Travel</option>
+                    <option value="General & Registration">ℹ️ General Rules & Registration</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="querySubject">Query Subject <span class="req">*</span></label>
+                <input type="text" id="querySubject" name="querySubject" placeholder="e.g. Can 4th year VTU teams bring external hardware sensors for demo?" required>
+              </div>
+
+              <div class="form-group">
+                <label for="queryMessage">Detailed Description <span class="req">*</span></label>
+                <textarea id="queryMessage" name="queryMessage" rows="4" placeholder="Explain your question clearly with any specific event track details..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary glow-strong btn-block" id="submitQueryBtn">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Post Query to Helpdesk</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Live Query Stream & FAQ Tabs -->
+          <div class="query-card query-display-card">
+            <div class="query-tabs-header">
+              <button class="query-tab-btn active" id="tabLiveFeed" data-tab="liveFeed">
+                <i class="fa-solid fa-comments"></i>
+                <span>Live Query Feed</span>
+                <span class="feed-count-badge" id="feedCountBadge">4</span>
+              </button>
+              <button class="query-tab-btn" id="tabFaq" data-tab="faqList">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Frequent FAQs</span>
+              </button>
+            </div>
+
+            <!-- Tab 1: Live Feed -->
+            <div class="query-tab-content active" id="liveFeedContent">
+              <div class="query-feed-scroll" id="queryFeedScroll">
+                <!-- Dynamically populated via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Tab 2: FAQs Accordion -->
+            <div class="query-tab-content" id="faqContent" style="display:none;">
+              <div class="faq-accordion" id="faqAccordion">
+                <!-- Dynamically populated via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Urgent WhatsApp Helpdesk Banner -->
+            <div class="urgent-helpdesk-banner">
+              <div class="urgent-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div class="urgent-text">
+                <strong>Need Instant Urgent Help?</strong>
+                <p>Chat directly with the ORBIT 2K26 Student Support Desk: <strong>+91 94812 34567</strong></p>
+              </div>
+              <a href="https://wa.me/919481234567?text=Hi%2C%20I%20have%20a%20query%20regarding%20MIT%20Kundapura%20ORBIT%202K26" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-cyan">
+                <span>WhatsApp Desk</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ======================================================== -->
@@ -1010,6 +1130,7 @@
             <li><a href="#slide-orbit">Theme: New Dimension</a></li>
             <li><a href="#schedule-section">2-Day Schedule</a></li>
             <li><a href="#venue-section">Campus Location & Reach</a></li>
+            <li><a href="#queries-section">Participant Query Helpdesk</a></li>
             <li><a href="javascript:void(0)" onclick="openRegistrationModal('hackorbit')">Register Online</a></li>
             <li><a href="https://mitk.edu.in" target="_blank" rel="noopener noreferrer">Official MITK Portal</a></li>
           </ul>

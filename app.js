@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlideObserver();
   initModals();
   initRegistrationForm();
+  initQueryPortal();
 });
 
 /* ===================================================================
@@ -1116,4 +1117,259 @@ function showToast(message) {
     toast.style.transition = 'all 0.3s ease-out';
     setTimeout(() => toast.remove(), 300);
   }, 4000);
+}
+
+/* ===================================================================
+   10. PARTICIPANT QUERY PORTAL & HELPDESK CONTROLLER
+   =================================================================== */
+
+const DEFAULT_QUERIES = [
+  {
+    id: 'QUERY-ORBIT-26-8812',
+    author: 'Gautham Shenoy',
+    college: 'NMAM Institute of Technology, Nitte',
+    category: 'VTU 4th-Year Capstone',
+    subject: 'Can VTU teams bring physical IoT hardware prototypes to present?',
+    question: 'Our final year capstone project is an IoT-based Smart Hydroponic Monitoring System with live sensors and solar battery pack. Are physical demo booths and AC power sockets provided in the Exhibition Pavilion?',
+    reply: 'Yes, absolutely! Each registered VTU capstone project team is provided a dedicated project exhibition stall with high-speed Wi-Fi, dual 230V power points, and poster display boards. Live hardware demonstrations are highly appreciated by our VTU judging panel.',
+    repliedBy: 'Prof. Sushmitha M. (VTU Conclave Coordinator)',
+    time: '25 mins ago',
+    status: 'Answered'
+  },
+  {
+    id: 'QUERY-ORBIT-26-8740',
+    author: 'Meghana Rao',
+    college: 'Canara Engineering College, Mangaluru',
+    category: '42-Hour Hackathon',
+    subject: 'Is campus accommodation and food complimentary for HackOrbit participants?',
+    question: 'We are a 4-member team traveling from Mangaluru. Does the 42-hour hackathon provide overnight resting zones, Wi-Fi, and meals on campus?',
+    reply: 'Yes, Meghana! All registered 42-hour hackathoners get complimentary campus hostel stay, separate resting lounges for boys and girls, 24x7 lab access, hot midnight meals, breakfast, and continuous caffeine/refreshments throughout the 42 hours.',
+    repliedBy: 'Sandesh Shetty (Student Hackathon Lead)',
+    time: '1 hour ago',
+    status: 'Answered'
+  },
+  {
+    id: 'QUERY-ORBIT-26-8695',
+    author: 'Abhinav Patel',
+    college: 'B.M.S. College of Engineering, Bengaluru',
+    category: 'Accommodation & Travel',
+    subject: 'How far is Kundapura Railway Station from the college entrance?',
+    question: 'We will be arriving by the Panchaganga Superfast Express at Kundapura. How do we reach the college campus?',
+    reply: 'Moodlakatte Institute of Technology Kundapura (MITK) is located literally right opposite the Kundapura Railway Station (KUDA)! You can easily walk to the main campus reception desk in under 2 minutes (less than 200 meters walking distance).',
+    repliedBy: 'MITK Hospitality & Transit Desk',
+    time: '3 hours ago',
+    status: 'Answered'
+  },
+  {
+    id: 'QUERY-ORBIT-26-8511',
+    author: 'Sneha Vernekar',
+    college: 'Sahyadri College of Engineering, Mangaluru',
+    category: 'VTU 4th-Year Capstone',
+    subject: 'Will everyone in the 4th-year batch receive an official publication certificate?',
+    question: 'Our final year project has 4 students. Will each individual member receive an official certificate with the ISBN conference publication number for their resume?',
+    reply: 'Yes! Every presenting student in the registered batch receives an individualized, official Certificate of Project Presentation & Publication in the ORBIT 2K26 Conference Proceedings (ISBN registered), signed by the VTU session chair and the Principal.',
+    repliedBy: 'Dr. Nagaraj Bhat (Dean R&D, MITK)',
+    time: '5 hours ago',
+    status: 'Answered'
+  }
+];
+
+const CONCLAVE_FAQS = [
+  {
+    q: 'Who is eligible to participate in the VTU 4th-Year Capstone Project Conclave?',
+    a: 'Any final year (4th-Year / 7th & 8th Semester) BE or B.Tech student studying in any VTU-affiliated engineering college in Karnataka. You can present your ongoing or completed final year capstone engineering project.'
+  },
+  {
+    q: 'What is the publication format for the VTU proceedings?',
+    a: 'Manuscripts should follow the standard IEEE two-column conference format (4 to 6 pages). All presented papers will be archived with an official ISBN registered publication compendium and given digital certificates.'
+  },
+  {
+    q: 'What are the rules for the 42-Hour HackOrbit Hackathon?',
+    a: 'Teams of 2 to 4 members are given 42 continuous hours on MIT Kundapura campus. Development must take place on a fresh GitHub repo started during kickoff. Mentors evaluate your architecture at 3 designated checkpoints.'
+  },
+  {
+    q: 'Is outstation accommodation provided?',
+    a: 'Yes, complimentary hostel lodging and dining are provided for outstation teams participating in the 42-Hour Hackathon and VTU Capstone Expo upon prior confirmation.'
+  },
+  {
+    q: 'Can we participate in both technical and non-technical events?',
+    a: 'Yes! Individual participants and teams are welcome to enroll in multiple events across Day 1 and Day 2 as long as the competition schedules do not conflict.'
+  },
+  {
+    q: 'How do I download my Fest Entry Pass after registering?',
+    a: 'Once you submit the online registration form, your Digital Delegate Pass is automatically generated on-screen with your unique Registration ID and QR Code. You can print it directly or save it as a PDF.'
+  }
+];
+
+function initQueryPortal() {
+  const form = document.getElementById('participantQueryForm');
+  const feedScroll = document.getElementById('queryFeedScroll');
+  const faqAccordion = document.getElementById('faqAccordion');
+  const tabLiveFeed = document.getElementById('tabLiveFeed');
+  const tabFaq = document.getElementById('tabFaq');
+  const liveFeedContent = document.getElementById('liveFeedContent');
+  const faqContent = document.getElementById('faqContent');
+  const feedCountBadge = document.getElementById('feedCountBadge');
+
+  if (!form || !feedScroll) return;
+
+  // Retrieve stored queries from localStorage or initialize with defaults
+  let storedQueries = [];
+  try {
+    storedQueries = JSON.parse(localStorage.getItem('orbit2k26_queries') || '[]');
+  } catch (e) {
+    storedQueries = [];
+  }
+
+  // Combine stored queries with defaults
+  const allQueries = [...storedQueries, ...DEFAULT_QUERIES];
+
+  // Render Live Feed
+  function renderLiveFeed() {
+    if (feedCountBadge) feedCountBadge.textContent = allQueries.length;
+    feedScroll.innerHTML = allQueries.map(q => `
+      <div class="feed-item" id="${q.id}">
+        <div class="feed-item-top">
+          <div class="feed-author-meta">
+            <span class="feed-author-name"><i class="fa-solid fa-user-circle" style="color:var(--cyan-primary)"></i> ${q.author}</span>
+            <span class="feed-author-college">• ${q.college}</span>
+          </div>
+          <span class="feed-category-pill">${q.category}</span>
+        </div>
+
+        <h4 class="feed-subject">${q.subject}</h4>
+        <p class="feed-question">${q.question}</p>
+
+        ${q.reply ? `
+          <div class="feed-official-reply">
+            <span class="reply-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              ${q.repliedBy || 'Answered by MITK Coordinator'}
+            </span>
+            <p class="reply-text">${q.reply}</p>
+          </div>
+        ` : `
+          <div class="feed-official-reply" style="background:rgba(245,158,11,0.08);border-left-color:var(--gold-accent)">
+            <span class="reply-badge" style="color:var(--gold-accent)">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              Under Review by MITK Helpdesk
+            </span>
+            <p class="reply-text">A coordinator has received your query and will respond shortly.</p>
+          </div>
+        `}
+
+        <div class="feed-meta-bottom">
+          <span>Ticket: <strong style="color:var(--cyan-primary)">${q.id}</strong></span>
+          <span><i class="fa-regular fa-clock"></i> ${q.time}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  renderLiveFeed();
+
+  // Render FAQs Accordion
+  if (faqAccordion) {
+    faqAccordion.innerHTML = CONCLAVE_FAQS.map((faq, i) => `
+      <div class="faq-item ${i === 0 ? 'active' : ''}">
+        <button type="button" class="faq-question-btn">
+          <span>${faq.q}</span>
+          <i class="fa-solid fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          <p>${faq.a}</p>
+        </div>
+      </div>
+    `).join('');
+
+    faqAccordion.querySelectorAll('.faq-question-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasActive = item.classList.contains('active');
+        faqAccordion.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!wasActive) {
+          item.classList.add('active');
+        }
+        playSound('click');
+      });
+    });
+  }
+
+  // Tab Switching (Live Feed vs. FAQs)
+  if (tabLiveFeed && tabFaq) {
+    tabLiveFeed.addEventListener('click', () => {
+      tabLiveFeed.classList.add('active');
+      tabFaq.classList.remove('active');
+      if (liveFeedContent) liveFeedContent.style.display = 'block';
+      if (faqContent) faqContent.style.display = 'none';
+      playSound('click');
+    });
+
+    tabFaq.addEventListener('click', () => {
+      tabFaq.classList.add('active');
+      tabLiveFeed.classList.remove('active');
+      if (liveFeedContent) liveFeedContent.style.display = 'none';
+      if (faqContent) faqContent.style.display = 'block';
+      playSound('click');
+    });
+  }
+
+  // Handle Query Form Submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const author = document.getElementById('queryAuthor').value.trim();
+    const college = document.getElementById('queryCollege').value.trim();
+    const contact = document.getElementById('queryContact').value.trim();
+    const category = document.getElementById('queryCategory').value;
+    const subject = document.getElementById('querySubject').value.trim();
+    const message = document.getElementById('queryMessage').value.trim();
+
+    if (!author || !college || !contact || !subject || !message) {
+      showToast('⚠️ Please fill in all query fields before submitting.');
+      return;
+    }
+
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    const queryId = `QUERY-ORBIT-26-${randomSuffix}`;
+
+    const newQuery = {
+      id: queryId,
+      author,
+      college,
+      contact,
+      category,
+      subject,
+      question: message,
+      reply: 'Thank you for your question! The MIT Kundapura student coordinator for this arena has been alerted via SMS/Email and will update this thread shortly.',
+      repliedBy: 'Auto-Helpdesk Dispatcher (MITK)',
+      time: 'Just now',
+      status: 'Received'
+    };
+
+    allQueries.unshift(newQuery);
+
+    try {
+      const existing = JSON.parse(localStorage.getItem('orbit2k26_queries') || '[]');
+      existing.unshift(newQuery);
+      localStorage.setItem('orbit2k26_queries', JSON.stringify(existing));
+    } catch (err) {
+      console.warn('Storage unavailable:', err);
+    }
+
+    renderLiveFeed();
+    form.reset();
+
+    // Switch to live feed tab if on FAQs
+    if (tabLiveFeed) tabLiveFeed.click();
+
+    playSound('success');
+    showToast(`✅ Query posted! Tracking Ticket: ${queryId}`);
+
+    // Scroll the new item into view smoothly
+    setTimeout(() => {
+      const newEl = document.getElementById(queryId);
+      if (newEl) newEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 200);
+  });
 }
