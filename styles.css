@@ -1868,6 +1868,41 @@ button, input, select, textarea {
   background: rgba(0, 240, 255, 0.2);
   color: var(--cyan-primary);
 }
+.timeline-badge.djnight {
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.25), rgba(168, 85, 247, 0.25));
+  color: #ff3388;
+  border: 1px solid rgba(255, 51, 136, 0.5);
+  box-shadow: 0 0 12px rgba(255, 51, 136, 0.35);
+}
+
+.highlight-djnight .timeline-card {
+  border-color: rgba(236, 72, 153, 0.5);
+  background: linear-gradient(135deg, rgba(42, 16, 52, 0.85), rgba(18, 24, 52, 0.85));
+  box-shadow: 0 0 30px rgba(236, 72, 153, 0.2);
+}
+
+.marker-dot.dj-pulse {
+  border-color: #ec4899;
+  box-shadow: 0 0 18px #ec4899;
+  animation: pulseDot 1s infinite;
+}
+
+.meta-chip.fee-chip {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--green-accent);
+  font-weight: 700;
+}
+.meta-chip.fee-chip i {
+  color: var(--green-accent);
+}
+
+.highlight-dj-stat {
+  border-color: rgba(236, 72, 153, 0.4);
+}
+.highlight-dj-stat:hover {
+  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25);
+}
 
 .timeline-card h4 {
   font-family: var(--font-display);
@@ -3173,7 +3208,7 @@ button, input, select, textarea {
   display: block;
 }
 
-/* Urgent WhatsApp Banner */
+/* Conclave Support Desk Banner */
 .urgent-helpdesk-banner {
   display: flex;
   align-items: center;

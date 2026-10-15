@@ -91,7 +91,6 @@ function playSound(type) {
       osc.start(now);
       osc.stop(now + 0.08);
     } else if (type === 'success') {
-      // Arpeggiated dimensional chord
       [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
         const subOsc = ctx.createOscillator();
         const subGain = ctx.createGain();
@@ -153,7 +152,6 @@ function initParticleCanvas() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw connecting constellation lines
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -171,7 +169,6 @@ function initParticleCanvas() {
       }
     }
 
-    // Draw individual particles
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
@@ -207,7 +204,6 @@ function initCountdownTimer() {
 
   if (!cdDays) return;
 
-  // Event Date: October 9, 2026, 09:00:00 IST
   const eventDate = new Date('2026-10-09T09:00:00+05:30').getTime();
 
   function updateTimer() {
@@ -252,14 +248,16 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: true,
     prizePool: '₹75,000 + Incubation',
+    regFee: '₹2,500 / Team',
     teamSize: '2 - 4 Members',
     venue: 'Central Computing Center (Lab 1 & 2)',
     timing: 'Oct 9, 11:00 AM - Oct 11, 05:00 AM (42 Hours Continuous)',
-    brief: 'The flagship 42-hour continuous hackathon at MIT Kundapura. Tackle high-impact real-world challenge statements across AI/ML, Web3, Smart Cities, HealthTech, and Agritech with non-stop mentorship and food.',
+    brief: 'The flagship 42-hour continuous hackathon at MIT Kundapura. Registration fee: ₹2,500 per team. Includes dedicated lab bays, all meals, overnight lodging, mentorship, and free delegate entry to Cosmic DJ Night.',
     description: `HackOrbit is a national-tier 42-hour hackathon designed to test endurance, creativity, and technical execution. Hackers from colleges across India will converge at MIT Kundapura to build full-stack web, mobile, AI, and IoT solutions from scratch. 
     
-    Participants get 24/7 dedicated high-speed Wi-Fi, lab workspaces, power docks, resting lounges, continuous midnight meals and caffeine fuel, plus 1-on-1 mentorship checkpoints with seasoned architects and engineering leaders from top MNCs and startups.`,
+    Registration Fee: ₹2,500 per team (up to 4 members). Registration covers 24/7 dedicated high-speed Wi-Fi, lab workspaces, power docks, resting lounges, continuous midnight meals and caffeine fuel, plus 1-on-1 mentorship checkpoints with seasoned architects and engineering leaders, and free access to the Grand DJ Night.`,
     rules: [
+      'Registration Fee: Strictly ₹2,500 per team (up to 4 members).',
       'Team size: 2 to 4 members. Cross-college teams are permitted.',
       'Duration: Strictly 42 hours continuous coding on MIT Kundapura campus.',
       'All code, design assets, and commits must be created entirely during the 42-hour hackathon window on a new GitHub repository.',
@@ -267,8 +265,8 @@ const EVENTS_DATABASE = [
       'Three progressive mentor review checkpoints with Git commit logs evaluation.',
       'Top 10 finalists will deliver a 5-minute live demo and 3-minute Q&A on the main auditorium stage before the jury.'
     ],
-    perks: ['₹75,000 Total Cash Prizes', '24x7 Meals & Refreshments', 'Incubation & Internship Offers', 'Certificates of Excellence', 'Hacker Swag Kits'],
-    coordinators: 'Prof. Rajesh K. (Faculty) • Sandesh Shetty (Student: 94812 34567)'
+    perks: ['₹75,000 Total Cash Prizes', '24x7 Meals & Refreshments', 'Complimentary Hostel Stay', 'Free Entry to Cosmic DJ Night', 'Incubation & Internship Offers', 'Certificates of Excellence', 'Hacker Swag Kits'],
+    coordinators: 'Prof. Rajesh K. (Faculty) • Sandesh Shetty (Student Lead)'
   },
   {
     id: 'devorbit-web',
@@ -279,6 +277,7 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: false,
     prizePool: '₹25,000',
+    regFee: '₹300 / Team',
     teamSize: '1 - 3 Members',
     venue: 'Software Innovation Hub',
     timing: 'Oct 9, 02:00 PM - 07:00 PM (5 Hours Sprint)',
@@ -290,8 +289,8 @@ const EVENTS_DATABASE = [
       'Must deploy a functional live URL (Vercel, Netlify, Render, or GitHub Pages) and provide source code.',
       'Evaluation criteria: Responsive Design (25%), Code Quality & Architecture (25%), Feature Completeness (30%), Innovation (20%).'
     ],
-    perks: ['Cash Prizes for Top 3 Teams', 'Merit Certificates', 'Web Developer Goodies'],
-    coordinators: 'Prof. Anitha Rao • Pradeep Kumar (Student: 98450 11223)'
+    perks: ['Cash Prizes for Top 3 Teams', 'Merit Certificates', 'Web Developer Goodies', 'Access to DJ Night'],
+    coordinators: 'Prof. Anitha Rao (Faculty) • Pradeep Kumar (Student Lead)'
   },
   {
     id: 'apporbit-mobile',
@@ -302,6 +301,7 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: false,
     prizePool: '₹25,000',
+    regFee: '₹300 / Team',
     teamSize: '1 - 3 Members',
     venue: 'Mobile App Development Studio',
     timing: 'Oct 10, 09:30 AM - 02:30 PM (5 Hours)',
@@ -314,7 +314,7 @@ const EVENTS_DATABASE = [
       'Live mirroring of device on projector during final 3-minute pitch.'
     ],
     perks: ['Cash Awards for Winners', 'App Store / Play Store Hosting Support', 'Participation Certificates'],
-    coordinators: 'Prof. Vinay Kumar • Rakshith Poojary (Student: 99011 22334)'
+    coordinators: 'Prof. Vinay Kumar (Faculty) • Rakshith Poojary (Student Lead)'
   },
   {
     id: 'vtu-paper',
@@ -325,30 +325,34 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: true,
     prizePool: '₹35,000 + ISBN Publication',
-    teamSize: '1 - 4 Members',
+    regFee: '₹3,000 / Team',
+    teamSize: 'Strictly 2 Members',
     venue: 'MITK Seminar Halls 1 & 2, Exhibition Pavilion',
     timing: 'Oct 9 & 10 (Two Batches: Track A & Track B)',
-    brief: 'A prestigious platform dedicated to final year engineering students of VTU-affiliated colleges to present capstone projects, gain peer review, and receive official publication in ORBIT 2K26 Conference Proceedings (ISBN registered).',
+    brief: 'Prestigious conclave for final year engineering students of VTU-affiliated colleges. Strictly 2 members per team. Project presentation and formal publication in ORBIT 2K26 Conference Proceedings (ISBN registered). Publication Fee: ₹3,000 per team.',
     description: `Under the vision of Moodlakatte Institute of Technology Kundapura, this premier conclave is specially designed for 4th Year (Final Year) BE / B.Tech students studying across all VTU-affiliated engineering colleges in Karnataka.
+    
+    Publication & Registration Fee: ₹3,000 per team. Each team must consist strictly of 2 members.
     
     Students can present their final year capstone engineering projects before an esteemed panel composed of VTU professors, doctoral researchers, and industry tech leaders. 
     
-    Every accepted and presented paper will be formally published in the ORBIT 2K26 National Conference Proceedings with an official ISBN number and Digital Certificate of Publication—a tremendous credential for job placements, campus recruitment, and higher studies admissions (MS/M.Tech).`,
+    Every accepted and presented paper will be formally published in the ORBIT 2K26 National Conference Proceedings with an official ISBN number and Individual Digital Certificate of Publication—a tremendous credential for job placements, campus recruitment, and higher studies admissions (MS/M.Tech). Teams also receive food coupons and access to the Mega Cosmic DJ Night.`,
     rules: [
       'Eligibility: Open exclusively to 4th Year BE/B.Tech students from VTU-affiliated colleges across Karnataka.',
-      'Team size: 1 to 4 members (final year project batch members).',
+      'Team size: Strictly 2 members per team (final-year engineering partners).',
+      'Publication / Registration Fee: ₹3,000 per team.',
       'Format: Paper manuscript must adhere to the standard IEEE two-column conference format (4 to 6 pages).',
       'Tracks: Computer Science & Engg, Information Science, Electronics & Communication, Artificial Intelligence & Data Science, Mechanical, and Civil Engineering.',
-      'Working hardware or software prototype demo is strongly encouraged for extra scoring in the Exhibition Pavilion.',
-      'Every registered member attending the presentation will receive a physical Certificate of Project Presentation & Publication.'
+      'Working hardware or software prototype demo is strongly encouraged in the Exhibition Pavilion.',
+      'Every registered member attending the presentation will receive an individual physical Certificate of Project Presentation & Publication.'
     ],
     perks: [
       'Official Certificate of Project Publication in ISBN Registered Proceedings',
       'Best Project Award per Engineering Branch (Cash + Trophy)',
       'Direct Mentorship & Networking with Industry Hiring Scouts',
-      'Exhibition Booth provided for working hardware/software demos'
+      'Free Entry to Cosmic DJ Night & Food Coupons'
     ],
-    coordinators: 'Dr. Nagaraj Bhat (Dean R&D) • Prof. Sushmitha M. • Karthik Hegde (Student: 97412 88990)'
+    coordinators: 'Dr. Nagaraj Bhat (Dean R&D) • Prof. Sushmitha M. (VTU Coordinator) • Karthik Hegde (Student Lead)'
   },
   {
     id: 'techscribe',
@@ -359,6 +363,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹20,000',
+    regFee: '₹300 / Team',
     teamSize: '1 - 3 Members',
     venue: 'Conference Hall A',
     timing: 'Oct 9, 01:30 PM - 05:00 PM',
@@ -371,7 +376,7 @@ const EVENTS_DATABASE = [
       'Plagiarism index must be below 20%.'
     ],
     perks: ['Cash Prizes for 1st & 2nd', 'Certificate of Merit', 'Expert Faculty Feedback'],
-    coordinators: 'Prof. Deepa Nayak • Harshitha Rao (Student: 94480 33445)'
+    coordinators: 'Prof. Deepa Nayak (Faculty) • Harshitha Rao (Student Lead)'
   },
   {
     id: 'bytebattle',
@@ -382,6 +387,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹15,000',
+    regFee: '₹200 / Person',
     teamSize: '1 - 2 Members',
     venue: 'Computer Center Lab 3',
     timing: 'Oct 10, 11:00 AM - 01:30 PM',
@@ -394,7 +400,7 @@ const EVENTS_DATABASE = [
       'Internet access restricted during the contest window.'
     ],
     perks: ['Cash Awards for Top Coders', 'Badges of Algorithmic Mastery'],
-    coordinators: 'Prof. Chethan Kumar • Abhishek Nayak (Student: 98860 44556)'
+    coordinators: 'Prof. Chethan Kumar (Faculty) • Abhishek Nayak (Student Lead)'
   },
   {
     id: 'roboclash',
@@ -405,6 +411,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹20,000',
+    regFee: '₹400 / Team',
     teamSize: '2 - 4 Members',
     venue: 'MITK Indoor Sports Complex Arena',
     timing: 'Oct 10, 02:00 PM - 05:00 PM',
@@ -416,10 +423,33 @@ const EVENTS_DATABASE = [
       'Timed runs with penalties for lane departures and manual touches.'
     ],
     perks: ['Cash Prizes for Fastest Time', 'Engineering Trophies', 'Hardware Certificates'],
-    coordinators: 'Prof. Ramesh Pai • Varun Kamath (Student: 96112 55667)'
+    coordinators: 'Prof. Ramesh Pai (Faculty) • Varun Kamath (Student Lead)'
   },
 
   // --- NON-TECHNICAL & CULTURAL EVENTS ---
+  {
+    id: 'djnight',
+    title: 'Cosmic Beats: Mega Star DJ Night',
+    tagline: 'Grand Festival Climax EDM, Laser Spectacle & Campus Dance Arena',
+    category: 'non-technical',
+    subCategory: 'cultural',
+    featured: true,
+    isFlagship: true,
+    prizePool: 'Live Concert & Laser Show',
+    regFee: 'Free with Delegate Pass',
+    teamSize: 'All Fest Delegates & Teams',
+    venue: 'MITK Open Air Amphitheatre Ground',
+    timing: 'Oct 10, 07:30 PM - 10:30 PM (Grand Finale)',
+    brief: 'The monumental musical climax of ORBIT 2K26! Electrifying celebrity guest DJ sets, laser light choreography, bass drops, and open-air campus dance celebration.',
+    description: `Close out two days of intense hacking, paper presentations, and competitions with the grandest college party in coastal Karnataka! Celebrity DJ artists dropping high-energy EDM, progressive house, and trending festival remixes on a concert-grade sound system with 3D lasers, CO2 jets, and neon glow gear. Free entry for all registered participants and delegates.`,
+    rules: [
+      'Valid ORBIT 2K26 Delegate Pass / Fest ID is mandatory for admission.',
+      'Strictly college code of conduct, safe campus policy, and zero tolerance for alcohol or substances.',
+      'Entry gates open at 07:00 PM on October 10.'
+    ],
+    perks: ['Free Entry for all Registered Hackathon, Paper Publication & Event Teams', 'Concert Laser Show & Glow Sticks', 'Celebrity DJ Performance'],
+    coordinators: 'Prof. Divya Rani • Student Cultural Committee'
+  },
   {
     id: 'cosmoquest',
     title: 'CosmoQuest: Mega Campus Treasure Hunt',
@@ -429,6 +459,7 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: false,
     prizePool: '₹15,000',
+    regFee: '₹250 / Team',
     teamSize: '2 - 4 Members',
     venue: 'Entire MIT Kundapura Campus Grounds',
     timing: 'Oct 9, 05:00 PM - 07:00 PM',
@@ -441,7 +472,7 @@ const EVENTS_DATABASE = [
       'Decisions of the Game Masters are final and binding.'
     ],
     perks: ['Grand Cash Bounty for Winning Crew', 'Exclusive CosmoQuest Badges'],
-    coordinators: 'Prof. Roopa Shetty • Prajwal Kumar (Student: 94823 66778)'
+    coordinators: 'Prof. Roopa Shetty (Faculty) • Prajwal Kumar (Student Lead)'
   },
   {
     id: 'esports-arena',
@@ -452,6 +483,7 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: false,
     prizePool: '₹25,000',
+    regFee: '₹400 / Squad',
     teamSize: '4 Members (BGMI) / 5 Members (Valorant)',
     venue: 'MITK Main Auditorium Stage LAN Arena',
     timing: 'Oct 9 (Prelims) & Oct 10, 01:00 PM (Grand Finals)',
@@ -463,7 +495,7 @@ const EVENTS_DATABASE = [
       'Any third-party hack, script, or cheating software will result in immediate disqualification and campus ban.'
     ],
     perks: ['₹25,000 Total Prize Pool', 'Championship Gaming Trophies', 'E-Sports MVP Badges'],
-    coordinators: 'Prof. Gururaj Shenoy • Shreyas M. (Student: 97314 77889)'
+    coordinators: 'Prof. Gururaj Shenoy (Faculty) • Shreyas M. (Student Lead)'
   },
   {
     id: 'pixelcraft',
@@ -474,6 +506,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹12,000',
+    regFee: '₹150 / Person',
     teamSize: '1 - 3 Members',
     venue: 'Seminar Hall 3 & Media Room',
     timing: 'Oct 10, 03:00 PM (Screening & Evaluation)',
@@ -485,7 +518,7 @@ const EVENTS_DATABASE = [
       'No heavy AI image generation permitted; standard color grading is allowed.'
     ],
     perks: ['Cash Prizes for Best Film & Best Photo', 'Screening on Auditorium Big Screen'],
-    coordinators: 'Prof. Shilpa M. • Suhas Poojary (Student: 94498 88990)'
+    coordinators: 'Prof. Shilpa M. (Faculty) • Suhas Poojary (Student Lead)'
   },
   {
     id: 'rhythmorbit',
@@ -496,6 +529,7 @@ const EVENTS_DATABASE = [
     featured: true,
     isFlagship: false,
     prizePool: '₹25,000',
+    regFee: '₹500 / Band',
     teamSize: '3 - 8 Members (Band) / 1 - 2 (Acoustic)',
     venue: 'MITK Open Air Amphitheatre',
     timing: 'Oct 9, 07:30 PM - 10:30 PM',
@@ -507,7 +541,7 @@ const EVENTS_DATABASE = [
       'Judged on tight rhythm, vocal dynamics, original arrangement, and stage presence.'
     ],
     perks: ['₹25,000 Cash Pool', 'Stage Trophies', 'Campus Celebrity Spotlight'],
-    coordinators: 'Prof. Divya Rani • Nikhil Bhat (Student: 98801 99001)'
+    coordinators: 'Prof. Divya Rani (Faculty) • Nikhil Bhat (Student Lead)'
   },
   {
     id: 'brainorbit',
@@ -518,6 +552,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹10,000',
+    regFee: '₹150 / Team',
     teamSize: '2 Members',
     venue: 'Lecture Hall Complex Room 101',
     timing: 'Oct 9, 03:30 PM - 06:00 PM',
@@ -530,7 +565,7 @@ const EVENTS_DATABASE = [
       'Negative marking on bounce and buzzer rounds.'
     ],
     perks: ['Cash Awards for Top 3 Teams', 'Quiz Wizard Trophies'],
-    coordinators: 'Prof. Prashanth Shenoy • Adithya Rao (Student: 96321 00112)'
+    coordinators: 'Prof. Prashanth Shenoy (Faculty) • Adithya Rao (Student Lead)'
   },
   {
     id: 'admad',
@@ -541,6 +576,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹10,000',
+    regFee: '₹200 / Team',
     teamSize: '2 - 3 Members',
     venue: 'MBA Seminar Hall',
     timing: 'Oct 10, 10:00 AM - 12:30 PM',
@@ -552,7 +588,7 @@ const EVENTS_DATABASE = [
       'Props allowed; obscenity or offensive language is strictly forbidden.'
     ],
     perks: ['Cash Prizes', 'Creative Star Certificates'],
-    coordinators: 'Prof. Manjula S. • Kavya Shetty (Student: 97405 11223)'
+    coordinators: 'Prof. Manjula S. (Faculty) • Kavya Shetty (Student Lead)'
   },
   {
     id: 'stepup',
@@ -563,6 +599,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹15,000',
+    regFee: '₹200 (Solo) / ₹400 (Crew)',
     teamSize: '1 (Solo) / 2 - 6 (Crew)',
     venue: 'Campus Amphitheatre Stage',
     timing: 'Oct 10, 03:00 PM - 05:00 PM',
@@ -574,7 +611,7 @@ const EVENTS_DATABASE = [
       'Judged on musicality, technique, energy, and choreographic originality.'
     ],
     perks: ['Cash Prizes for Solo & Crew', 'Dance Trophies'],
-    coordinators: 'Prof. Archana K. • Deepthi Poojary (Student: 94833 22334)'
+    coordinators: 'Prof. Archana K. (Faculty) • Deepthi Poojary (Student Lead)'
   },
   {
     id: 'animerealm',
@@ -585,6 +622,7 @@ const EVENTS_DATABASE = [
     featured: false,
     isFlagship: false,
     prizePool: '₹10,000',
+    regFee: '₹150 / Participant',
     teamSize: '1 Member (Solo)',
     venue: 'Main Auditorium Stage',
     timing: 'Oct 10, 04:30 PM',
@@ -596,7 +634,7 @@ const EVENTS_DATABASE = [
       'Evaluation: Craftsmanship (40%), Character Accuracy (30%), Stage Performance (30%).'
     ],
     perks: ['Best Cosplay Cash Awards', 'Collector Figurines & Merch'],
-    coordinators: 'Prof. Kiran Kumar • Rohit Sharma (Student: 98444 55667)'
+    coordinators: 'Prof. Kiran Kumar (Faculty) • Rohit Sharma (Student Lead)'
   }
 ];
 
@@ -612,7 +650,6 @@ function initEventsCatalog() {
 
   if (!eventsGrid) return;
 
-  // Filter Buttons Click
   if (categoryFilters) {
     categoryFilters.querySelectorAll('.filter-pill').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -624,7 +661,6 @@ function initEventsCatalog() {
     });
   }
 
-  // Search Input Handler
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value.trim().toLowerCase();
@@ -668,7 +704,6 @@ function renderEvents() {
   if (!grid) return;
 
   const filtered = EVENTS_DATABASE.filter(ev => {
-    // Category match
     let matchCat = false;
     if (currentFilter === 'all') matchCat = true;
     else if (currentFilter === 'technical') matchCat = ev.category === 'technical';
@@ -677,10 +712,9 @@ function renderEvents() {
     else if (currentFilter === 'vtu') matchCat = ev.category === 'vtu' || ev.id === 'vtu-paper';
     else if (currentFilter === 'gaming') matchCat = ev.subCategory === 'gaming';
 
-    // Search query match
     let matchSearch = true;
     if (searchQuery) {
-      const corpus = `${ev.title} ${ev.tagline} ${ev.brief} ${ev.prizePool} ${ev.venue}`.toLowerCase();
+      const corpus = `${ev.title} ${ev.tagline} ${ev.brief} ${ev.prizePool} ${ev.regFee || ''} ${ev.venue}`.toLowerCase();
       matchSearch = corpus.includes(searchQuery);
     }
 
@@ -698,20 +732,22 @@ function renderEvents() {
   grid.innerHTML = filtered.map(ev => {
     const isVtu = ev.category === 'vtu' || ev.id === 'vtu-paper';
     const isHack = ev.id === 'hackorbit';
-    const cardClass = `event-card ${ev.featured ? 'featured-card' : ''} ${isVtu ? 'vtu-special-card' : ''}`;
+    const isDj = ev.id === 'djnight';
+    const cardClass = `event-card ${ev.featured ? 'featured-card' : ''} ${isVtu ? 'vtu-special-card' : ''} ${isDj ? 'dj-special-card' : ''}`;
     const catClass = isVtu ? 'vtu' : ev.category;
-    const catLabel = isVtu ? 'VTU 4th-Year Special' : ev.category === 'technical' ? 'Technical' : 'Non-Technical';
+    const catLabel = isVtu ? 'VTU 4th-Year Special' : isDj ? 'Grand Finale Climax' : ev.category === 'technical' ? 'Technical' : 'Non-Technical';
 
     return `
       <div class="${cardClass}" id="card-${ev.id}">
         <div>
           <div class="card-top-row">
             <span class="category-tag ${catClass}">
-              <i class="${isVtu ? 'fa-solid fa-graduation-cap' : ev.category === 'technical' ? 'fa-solid fa-code' : 'fa-solid fa-masks-theater'}"></i>
+              <i class="${isVtu ? 'fa-solid fa-graduation-cap' : isDj ? 'fa-solid fa-headphones' : ev.category === 'technical' ? 'fa-solid fa-code' : 'fa-solid fa-masks-theater'}"></i>
               ${catLabel}
             </span>
             ${isHack ? '<span class="badge-flagship"><i class="fa-solid fa-bolt"></i> 42 HOURS</span>' : ''}
             ${isVtu ? '<span class="badge-flagship" style="background:#f59e0b;color:#05070e"><i class="fa-solid fa-award"></i> VTU EXPO</span>' : ''}
+            ${isDj ? '<span class="badge-flagship" style="background:#ec4899;color:#ffffff"><i class="fa-solid fa-fire"></i> DJ NIGHT</span>' : ''}
           </div>
 
           <div class="event-main-content">
@@ -726,6 +762,10 @@ function renderEvents() {
             <span class="meta-chip prize-chip">
               <i class="fa-solid fa-trophy"></i> ${ev.prizePool}
             </span>
+            ${ev.regFee ? `
+            <span class="meta-chip fee-chip">
+              <i class="fa-solid fa-receipt"></i> ${ev.regFee}
+            </span>` : ''}
             <span class="meta-chip">
               <i class="fa-solid fa-users"></i> ${ev.teamSize}
             </span>
@@ -739,7 +779,7 @@ function renderEvents() {
               <i class="fa-solid fa-circle-info"></i> Details
             </button>
             <button class="btn btn-sm btn-primary" onclick="openRegistrationModal('${ev.id}')">
-              <i class="fa-solid fa-ticket"></i> Register
+              <i class="fa-solid fa-ticket"></i> ${isDj ? 'Get Pass' : 'Register'}
             </button>
           </div>
         </div>
@@ -747,14 +787,12 @@ function renderEvents() {
     `;
   }).join('');
 
-  // Re-attach audio hover hooks
   grid.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('mouseenter', () => playSound('hover'));
     btn.addEventListener('click', () => playSound('click'));
   });
 }
 
-// Global filter trigger from links
 window.filterEventsByCategory = function(category) {
   const categoryFilters = document.getElementById('categoryFilters');
   if (categoryFilters) {
@@ -827,7 +865,7 @@ function initNavbarScroll() {
 }
 
 function initSlideObserver() {
-  const sections = document.querySelectorAll('.slide-section, .events-section, .vtu-spotlight-section, .schedule-section');
+  const sections = document.querySelectorAll('.slide-section, .events-section, .vtu-spotlight-section, .schedule-section, .queries-section');
   const dots = document.querySelectorAll('.slide-dots-nav .dot-item');
   const navLinks = document.querySelectorAll('.navbar .nav-link');
 
@@ -836,12 +874,10 @@ function initSlideObserver() {
       if (entry.isIntersecting) {
         const id = entry.target.id;
 
-        // Update nav links
         navLinks.forEach(link => {
           link.classList.toggle('active', link.getAttribute('data-nav') === id);
         });
 
-        // Update slide dots
         dots.forEach(dot => {
           const href = dot.getAttribute('href');
           dot.classList.toggle('active', href === `#${id}`);
@@ -875,7 +911,6 @@ function initModals() {
     });
   }
 
-  // Close handlers
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeAllModals);
   if (modalCloseActionBtn) modalCloseActionBtn.addEventListener('click', closeAllModals);
   if (regModalCloseBtn) regModalCloseBtn.addEventListener('click', closeAllModals);
@@ -883,7 +918,6 @@ function initModals() {
   if (ticketCloseBtn) ticketCloseBtn.addEventListener('click', closeAllModals);
   if (ticketDoneBtn) ticketDoneBtn.addEventListener('click', closeAllModals);
 
-  // Click outside to close
   [eventModal, regModal, ticketModal].forEach(overlay => {
     if (overlay) {
       overlay.addEventListener('click', (e) => {
@@ -892,13 +926,11 @@ function initModals() {
     }
   });
 
-  // ESC key listener
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeAllModals();
   });
 }
 
-// Global modal triggers
 window.openEventDetails = function(eventId) {
   const ev = EVENTS_DATABASE.find(item => item.id === eventId);
   if (!ev) return;
@@ -922,6 +954,10 @@ window.openEventDetails = function(eventId) {
         <div class="meta-box-item">
           <span class="meta-box-label"><i class="fa-solid fa-trophy"></i> Prize Pool</span>
           <span class="meta-box-val" style="color:var(--gold-accent)">${ev.prizePool}</span>
+        </div>
+        <div class="meta-box-item">
+          <span class="meta-box-label"><i class="fa-solid fa-receipt"></i> Registration Fee</span>
+          <span class="meta-box-val" style="color:var(--green-accent)">${ev.regFee || 'Free Entry for Delegates'}</span>
         </div>
         <div class="meta-box-item">
           <span class="meta-box-label"><i class="fa-solid fa-users"></i> Team Structure</span>
@@ -958,7 +994,7 @@ window.openEventDetails = function(eventId) {
 
       <div class="modal-detail-block">
         <h4><i class="fa-solid fa-headset"></i> Faculty & Student Coordinators</h4>
-        <p><i class="fa-solid fa-phone"></i> ${ev.coordinators}</p>
+        <p><i class="fa-solid fa-user-tie"></i> ${ev.coordinators}</p>
       </div>
     `;
   }
@@ -980,14 +1016,37 @@ window.openRegistrationModal = function(eventId = 'hackorbit') {
   const regEventTitle = document.getElementById('regEventTitle');
   const eventIdInput = document.getElementById('selectedEventId');
   const vtuExtraFields = document.getElementById('vtuExtraFields');
+  const teamSizeSelect = document.getElementById('teamSize');
 
   const ev = EVENTS_DATABASE.find(item => item.id === eventId) || EVENTS_DATABASE[0];
 
   if (eventIdInput) eventIdInput.value = ev.id;
-  if (regEventBadge) regEventBadge.textContent = `Registering for: ${ev.category.toUpperCase()}`;
+  if (regEventBadge) {
+    const feeInfo = ev.regFee ? ` • Fee: ${ev.regFee}` : '';
+    regEventBadge.textContent = `Registering for: ${ev.category.toUpperCase()}${feeInfo}`;
+  }
   if (regEventTitle) regEventTitle.textContent = ev.title;
 
-  // Show VTU extra fields if it's the VTU paper or technical paper
+  // VTU Paper Publication enforces strictly 2 members per team
+  if (teamSizeSelect) {
+    if (ev.id === 'vtu-paper') {
+      teamSizeSelect.value = '2';
+      // Disable other options or guide the user
+      Array.from(teamSizeSelect.options).forEach(opt => {
+        opt.disabled = opt.value !== '2';
+      });
+      showToast('ℹ️ VTU Paper Publication requires strictly 2 members per team (₹3,000 / Team)');
+    } else {
+      Array.from(teamSizeSelect.options).forEach(opt => {
+        opt.disabled = false;
+      });
+      if (ev.id === 'hackorbit') {
+        teamSizeSelect.value = '4';
+      }
+    }
+    teamSizeSelect.dispatchEvent(new Event('change'));
+  }
+
   if (vtuExtraFields) {
     const isVtuOrPaper = ev.id === 'vtu-paper' || ev.id === 'techscribe' || ev.category === 'vtu';
     vtuExtraFields.style.display = isVtuOrPaper ? 'flex' : 'none';
@@ -1018,7 +1077,6 @@ function initRegistrationForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Validate Required Inputs
     const teamLead = document.getElementById('teamLeadName').value.trim();
     const email = document.getElementById('participantEmail').value.trim();
     const phone = document.getElementById('participantPhone').value.trim();
@@ -1038,13 +1096,11 @@ function initRegistrationForm() {
       return;
     }
 
-    // Generate Unique Registration ID
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
     const regId = `ORBIT-26-${randomSuffix}`;
 
     const eventObj = EVENTS_DATABASE.find(item => item.id === eventId) || { title: 'ORBIT 2K26 Event' };
 
-    // Save registration to localStorage
     const registrationRecord = {
       regId,
       teamLead,
@@ -1055,6 +1111,7 @@ function initRegistrationForm() {
       year,
       eventName: eventObj.title,
       eventId,
+      regFee: eventObj.regFee || 'Free Entry',
       timestamp: new Date().toISOString()
     };
 
@@ -1066,11 +1123,9 @@ function initRegistrationForm() {
       console.warn('Storage unavailable:', err);
     }
 
-    // Close registration modal
     const regOverlay = document.getElementById('regModalOverlay');
     if (regOverlay) regOverlay.classList.remove('open');
 
-    // Populate and open Digital Pass modal
     displayDigitalTicket(registrationRecord);
     playSound('success');
     showToast(`🎉 Registration Confirmed! Pass ID: ${regId}`);
@@ -1085,7 +1140,7 @@ function displayDigitalTicket(record) {
   const tCollege = document.getElementById('ticketCollegeName');
   const tUsn = document.getElementById('ticketUsn');
 
-  if (tEvent) tEvent.textContent = record.eventName;
+  if (tEvent) tEvent.textContent = `${record.eventName} • Fee: ${record.regFee || 'Confirmed'} (Inc. DJ Night Pass)`;
   if (tRegId) tRegId.textContent = record.regId;
   if (tName) tName.textContent = record.teamLead;
   if (tCollege) tCollege.textContent = record.college;
@@ -1141,9 +1196,9 @@ const DEFAULT_QUERIES = [
     author: 'Meghana Rao',
     college: 'Canara Engineering College, Mangaluru',
     category: '42-Hour Hackathon',
-    subject: 'Is campus accommodation and food complimentary for HackOrbit participants?',
-    question: 'We are a 4-member team traveling from Mangaluru. Does the 42-hour hackathon provide overnight resting zones, Wi-Fi, and meals on campus?',
-    reply: 'Yes, Meghana! All registered 42-hour hackathoners get complimentary campus hostel stay, separate resting lounges for boys and girls, 24x7 lab access, hot midnight meals, breakfast, and continuous caffeine/refreshments throughout the 42 hours.',
+    subject: 'Is campus accommodation and food included in the ₹2,500 hackathon fee?',
+    question: 'We are a 4-member team traveling from Mangaluru. Does the ₹2,500 team fee cover our meals, resting lounges, and entry to DJ Night?',
+    reply: 'Yes, Meghana! The ₹2,500 hackathon registration fee covers all 4 members for complimentary campus lodging, 24x7 lab access, 3 meals, hot midnight refreshments, coffee, mentorship, and free entry to the Grand Cosmic DJ Night on October 10.',
     repliedBy: 'Sandesh Shetty (Student Hackathon Lead)',
     time: '1 hour ago',
     status: 'Answered'
@@ -1165,35 +1220,47 @@ const DEFAULT_QUERIES = [
     author: 'Sneha Vernekar',
     college: 'Sahyadri College of Engineering, Mangaluru',
     category: 'VTU 4th-Year Capstone',
-    subject: 'Will everyone in the 4th-year batch receive an official publication certificate?',
-    question: 'Our final year project has 4 students. Will each individual member receive an official certificate with the ISBN conference publication number for their resume?',
-    reply: 'Yes! Every presenting student in the registered batch receives an individualized, official Certificate of Project Presentation & Publication in the ORBIT 2K26 Conference Proceedings (ISBN registered), signed by the VTU session chair and the Principal.',
+    subject: 'What is the team size limit and publication fee for VTU Capstone projects?',
+    question: 'How many students can be in a team for the 4th-year project presentation and what is the registration fee?',
+    reply: 'Each VTU paper publication team must consist strictly of 2 members. The registration/publication fee is ₹3,000 per team, which includes peer review, publication in the ISBN-registered Conference Proceedings, individual certificates for both members, demo booth, and delegate access to the Cosmic DJ Night.',
     repliedBy: 'Dr. Nagaraj Bhat (Dean R&D, MITK)',
-    time: '5 hours ago',
+    time: '4 hours ago',
+    status: 'Answered'
+  },
+  {
+    id: 'QUERY-ORBIT-26-8422',
+    author: 'Rohan Deshmukh',
+    college: 'R.V. College of Engineering, Bengaluru',
+    category: 'General & Registration',
+    subject: 'Is the Cosmic DJ Night free for all registered participants?',
+    question: 'Does our registration for the technical hackathon or paper publication grant entry to the Day 2 Cosmic DJ Night?',
+    reply: 'Yes! All registered participants across the 42-Hour Hackathon, VTU Paper Publication, and cultural events receive complimentary VIP admission to the Cosmic DJ Night with their delegate pass.',
+    repliedBy: 'Student Cultural Committee',
+    time: 'Just now',
     status: 'Answered'
   }
 ];
 
 const CONCLAVE_FAQS = [
   {
+    q: 'What is the registration fee for the 42-Hour Hackathon (HackOrbit)?',
+    a: 'The registration fee is strictly ₹2,500 per team (2 to 4 members). This covers 42 hours continuous lab bays, gigabit Wi-Fi, accommodation, 3 full meals, midnight refreshments, mentor reviews, and free entry to the Cosmic DJ Night.'
+  },
+  {
+    q: 'What is the team size and fee for the VTU 4th-Year Capstone Paper Publication?',
+    a: 'Each team contains strictly 2 members. The publication and registration fee is ₹3,000 per team. Both students receive individualized Certificates of Project Presentation & Publication in the ISBN-registered Proceedings, exhibition stall, food coupons, and entry to DJ Night.'
+  },
+  {
+    q: 'Is there a DJ Night at ORBIT 2K26?',
+    a: 'Yes! The monumental ORBIT Cosmic DJ Night takes place on Saturday, October 10 at 07:30 PM at the MITK Open Air Amphitheatre Ground, featuring celebrity guest DJs, 3D laser shows, and EDM festival drops. Free entry with your conclave delegate pass!'
+  },
+  {
+    q: 'How close is Kundapura Railway Station to the campus?',
+    a: 'Moodlakatte Institute of Technology Kundapura is located directly opposite the Kundapura Railway Station (less than 200 meters walking distance).'
+  },
+  {
     q: 'Who is eligible to participate in the VTU 4th-Year Capstone Project Conclave?',
-    a: 'Any final year (4th-Year / 7th & 8th Semester) BE or B.Tech student studying in any VTU-affiliated engineering college in Karnataka. You can present your ongoing or completed final year capstone engineering project.'
-  },
-  {
-    q: 'What is the publication format for the VTU proceedings?',
-    a: 'Manuscripts should follow the standard IEEE two-column conference format (4 to 6 pages). All presented papers will be archived with an official ISBN registered publication compendium and given digital certificates.'
-  },
-  {
-    q: 'What are the rules for the 42-Hour HackOrbit Hackathon?',
-    a: 'Teams of 2 to 4 members are given 42 continuous hours on MIT Kundapura campus. Development must take place on a fresh GitHub repo started during kickoff. Mentors evaluate your architecture at 3 designated checkpoints.'
-  },
-  {
-    q: 'Is outstation accommodation provided?',
-    a: 'Yes, complimentary hostel lodging and dining are provided for outstation teams participating in the 42-Hour Hackathon and VTU Capstone Expo upon prior confirmation.'
-  },
-  {
-    q: 'Can we participate in both technical and non-technical events?',
-    a: 'Yes! Individual participants and teams are welcome to enroll in multiple events across Day 1 and Day 2 as long as the competition schedules do not conflict.'
+    a: 'Any final year (4th-Year / 7th & 8th Semester) BE or B.Tech student studying in any VTU-affiliated engineering college in Karnataka. Each team consists of 2 members.'
   },
   {
     q: 'How do I download my Fest Entry Pass after registering?',
@@ -1213,7 +1280,6 @@ function initQueryPortal() {
 
   if (!form || !feedScroll) return;
 
-  // Retrieve stored queries from localStorage or initialize with defaults
   let storedQueries = [];
   try {
     storedQueries = JSON.parse(localStorage.getItem('orbit2k26_queries') || '[]');
@@ -1221,10 +1287,8 @@ function initQueryPortal() {
     storedQueries = [];
   }
 
-  // Combine stored queries with defaults
   const allQueries = [...storedQueries, ...DEFAULT_QUERIES];
 
-  // Render Live Feed
   function renderLiveFeed() {
     if (feedCountBadge) feedCountBadge.textContent = allQueries.length;
     feedScroll.innerHTML = allQueries.map(q => `
@@ -1268,7 +1332,6 @@ function initQueryPortal() {
 
   renderLiveFeed();
 
-  // Render FAQs Accordion
   if (faqAccordion) {
     faqAccordion.innerHTML = CONCLAVE_FAQS.map((faq, i) => `
       <div class="faq-item ${i === 0 ? 'active' : ''}">
@@ -1295,7 +1358,6 @@ function initQueryPortal() {
     });
   }
 
-  // Tab Switching (Live Feed vs. FAQs)
   if (tabLiveFeed && tabFaq) {
     tabLiveFeed.addEventListener('click', () => {
       tabLiveFeed.classList.add('active');
@@ -1314,7 +1376,6 @@ function initQueryPortal() {
     });
   }
 
-  // Handle Query Form Submit
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -1341,8 +1402,8 @@ function initQueryPortal() {
       category,
       subject,
       question: message,
-      reply: 'Thank you for your question! The MIT Kundapura student coordinator for this arena has been alerted via SMS/Email and will update this thread shortly.',
-      repliedBy: 'Auto-Helpdesk Dispatcher (MITK)',
+      reply: 'Thank you for your question! The MIT Kundapura coordinator for this track has received your query and will update this thread shortly.',
+      repliedBy: 'MITK Conclave Helpdesk',
       time: 'Just now',
       status: 'Received'
     };
@@ -1360,13 +1421,11 @@ function initQueryPortal() {
     renderLiveFeed();
     form.reset();
 
-    // Switch to live feed tab if on FAQs
     if (tabLiveFeed) tabLiveFeed.click();
 
     playSound('success');
     showToast(`✅ Query posted! Tracking Ticket: ${queryId}`);
 
-    // Scroll the new item into view smoothly
     setTimeout(() => {
       const newEl = document.getElementById(queryId);
       if (newEl) newEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
