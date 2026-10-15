@@ -324,23 +324,27 @@ const EVENTS_DATABASE = [
     subCategory: 'vtu-special',
     featured: true,
     isFlagship: true,
-    prizePool: '₹35,000 + ISBN Publication',
+    prizePool: 'Official Publication Certificate (Gain Final Year VTU Academic Points)',
     regFee: '₹3,000 / Team',
     teamSize: 'Strictly 2 Members',
     venue: 'MITK Seminar Halls 1 & 2, Exhibition Pavilion',
     timing: 'Oct 9 & 10 (Two Batches: Track A & Track B)',
-    brief: 'Prestigious conclave for final year engineering students of VTU-affiliated colleges. Strictly 2 members per team. Project presentation and formal publication in ORBIT 2K26 Conference Proceedings (ISBN registered). Publication Fee: ₹3,000 per team.',
+    brief: 'Prestigious conclave for final year engineering students of VTU-affiliated colleges. Strictly 2 members per team. Fee: ₹3,000 per team (Includes meals & campus stay). Formal publication in ISBN-registered proceedings with official certificates to earn points for your final year project viva & evaluation (No cash prizes).',
     description: `Under the vision of Moodlakatte Institute of Technology Kundapura, this premier conclave is specially designed for 4th Year (Final Year) BE / B.Tech students studying across all VTU-affiliated engineering colleges in Karnataka.
     
     Publication & Registration Fee: ₹3,000 per team. Each team must consist strictly of 2 members.
     
-    Students can present their final year capstone engineering projects before an esteemed panel composed of VTU professors, doctoral researchers, and industry tech leaders. 
+    Hospitality & Accommodation: Full campus hostel stay/accommodation and all meals & refreshments are included for both team members throughout the 2-day national conclave.
     
-    Every accepted and presented paper will be formally published in the ORBIT 2K26 National Conference Proceedings with an official ISBN number and Individual Digital Certificate of Publication—a tremendous credential for job placements, campus recruitment, and higher studies admissions (MS/M.Tech). Teams also receive food coupons and access to the Mega Cosmic DJ Night.`,
+    Academic Evaluation & Recognition: Please note that this is an academic research & publication track focused entirely on project credentials—there are no cash prizes for this event. Instead, every presenting student receives an individual physical Certificate of Project Presentation & Publication in the ISBN-registered ORBIT 2K26 Conference Proceedings to gain vital evaluation points, project viva credits, and activity points for your final year VTU degree evaluation, placement portfolios, and higher studies admissions.
+    
+    Students can present their final year capstone engineering projects before an esteemed panel composed of VTU professors, doctoral researchers, and industry tech leaders. Working prototypes, models, and simulations will be exhibited in the Exhibition Pavilion. All registered delegates also receive free entry to the Cosmic DJ Night.`,
     rules: [
       'Eligibility: Open exclusively to 4th Year BE/B.Tech students from VTU-affiliated colleges across Karnataka.',
       'Team size: Strictly 2 members per team (final-year engineering partners).',
       'Publication / Registration Fee: ₹3,000 per team.',
+      'Hospitality: All meals and campus hostel accommodation (stay) are included for both team members.',
+      'Awards & Credits: No cash prizes. Both authors receive an Official Certificate of Project Publication in the ISBN-registered proceedings to earn points for final year project viva & evaluation.',
       'Format: Paper manuscript must adhere to the standard IEEE two-column conference format (4 to 6 pages).',
       'Tracks: Computer Science & Engg, Information Science, Electronics & Communication, Artificial Intelligence & Data Science, Mechanical, and Civil Engineering.',
       'Working hardware or software prototype demo is strongly encouraged in the Exhibition Pavilion.',
@@ -348,9 +352,10 @@ const EVENTS_DATABASE = [
     ],
     perks: [
       'Official Certificate of Project Publication in ISBN Registered Proceedings',
-      'Best Project Award per Engineering Branch (Cash + Trophy)',
+      'Gain Crucial Academic & Activity Points for Final Year VTU Project Evaluation & Viva',
+      'Complimentary Campus Hostel Stay & All Meals Included for Both Members',
       'Direct Mentorship & Networking with Industry Hiring Scouts',
-      'Free Entry to Cosmic DJ Night & Food Coupons'
+      'Free Entry to Cosmic DJ Night'
     ],
     coordinators: 'Dr. Nagaraj Bhat (Dean R&D) • Prof. Sushmitha M. (VTU Coordinator) • Karthik Hegde (Student Lead)'
   },
@@ -759,9 +764,16 @@ function renderEvents() {
 
         <div>
           <div class="event-meta-chips">
+            ${isVtu ? `
+            <span class="meta-chip academic-chip" title="Gain Final Year VTU Academic Points (No Cash Prizes)">
+              <i class="fa-solid fa-certificate"></i> Cert. for Final Year Points (No Cash Prize)
+            </span>
+            <span class="meta-chip stay-chip">
+              <i class="fa-solid fa-bed"></i> Meals & Stay Inc.
+            </span>` : `
             <span class="meta-chip prize-chip">
               <i class="fa-solid fa-trophy"></i> ${ev.prizePool}
-            </span>
+            </span>`}
             ${ev.regFee ? `
             <span class="meta-chip fee-chip">
               <i class="fa-solid fa-receipt"></i> ${ev.regFee}
@@ -949,12 +961,22 @@ window.openEventDetails = function(eventId) {
   if (tagline) tagline.textContent = ev.tagline;
 
   if (body) {
+    const isVtuEvent = ev.id === 'vtu-paper' || ev.category === 'vtu';
     body.innerHTML = `
       <div class="modal-meta-grid">
-        <div class="meta-box-item">
-          <span class="meta-box-label"><i class="fa-solid fa-trophy"></i> Prize Pool</span>
-          <span class="meta-box-val" style="color:var(--gold-accent)">${ev.prizePool}</span>
+        <div class="meta-box-item ${isVtuEvent ? 'modal-span-full' : ''}">
+          <span class="meta-box-label"><i class="${isVtuEvent ? 'fa-solid fa-certificate' : 'fa-solid fa-trophy'}"></i> ${isVtuEvent ? 'Conclave Recognition & Benefits' : 'Prize Pool'}</span>
+          <span class="meta-box-val" style="color:${isVtuEvent ? '#fbbf24' : 'var(--gold-accent)'}">
+            ${isVtuEvent ? 'Official Publication Certificate (Gain Points for VTU Final Year Project & Viva) • No Cash Prize' : ev.prizePool}
+          </span>
         </div>
+        ${isVtuEvent ? `
+        <div class="meta-box-item modal-span-full">
+          <span class="meta-box-label"><i class="fa-solid fa-bed"></i> Hospitality & Stay Included</span>
+          <span class="meta-box-val" style="color:var(--cyan-primary)">
+            Complimentary Campus Hostel Accommodation & All Meals Provided for Both Team Members
+          </span>
+        </div>` : ''}
         <div class="meta-box-item">
           <span class="meta-box-label"><i class="fa-solid fa-receipt"></i> Registration Fee</span>
           <span class="meta-box-val" style="color:var(--green-accent)">${ev.regFee || 'Free Entry for Delegates'}</span>
@@ -1035,7 +1057,7 @@ window.openRegistrationModal = function(eventId = 'hackorbit') {
       Array.from(teamSizeSelect.options).forEach(opt => {
         opt.disabled = opt.value !== '2';
       });
-      showToast('ℹ️ VTU Paper Publication requires strictly 2 members per team (₹3,000 / Team)');
+      showToast('ℹ️ VTU Paper Publication requires strictly 2 members per team (₹3,000 / Team • Meals & Stay Included)');
     } else {
       Array.from(teamSizeSelect.options).forEach(opt => {
         opt.disabled = false;
@@ -1140,7 +1162,8 @@ function displayDigitalTicket(record) {
   const tCollege = document.getElementById('ticketCollegeName');
   const tUsn = document.getElementById('ticketUsn');
 
-  if (tEvent) tEvent.textContent = `${record.eventName} • Fee: ${record.regFee || 'Confirmed'} (Inc. DJ Night Pass)`;
+  const isVtuTicket = record.eventId === 'vtu-paper';
+  if (tEvent) tEvent.textContent = isVtuTicket ? `${record.eventName} • Fee: ${record.regFee || 'Confirmed'} (Meals, Stay & DJ Night Pass Inc.)` : `${record.eventName} • Fee: ${record.regFee || 'Confirmed'} (Inc. DJ Night Pass)`;
   if (tRegId) tRegId.textContent = record.regId;
   if (tName) tName.textContent = record.teamLead;
   if (tCollege) tCollege.textContent = record.college;
@@ -1220,9 +1243,9 @@ const DEFAULT_QUERIES = [
     author: 'Sneha Vernekar',
     college: 'Sahyadri College of Engineering, Mangaluru',
     category: 'VTU 4th-Year Capstone',
-    subject: 'What is the team size limit and publication fee for VTU Capstone projects?',
-    question: 'How many students can be in a team for the 4th-year project presentation and what is the registration fee?',
-    reply: 'Each VTU paper publication team must consist strictly of 2 members. The registration/publication fee is ₹3,000 per team, which includes peer review, publication in the ISBN-registered Conference Proceedings, individual certificates for both members, demo booth, and delegate access to the Cosmic DJ Night.',
+    subject: 'What is the team size limit, publication fee, and benefits for VTU Capstone projects?',
+    question: 'How many students can be in a team for the 4th-year project presentation, what is the fee, and are stay and meals provided?',
+    reply: 'Each VTU paper publication team must consist strictly of 2 members. The registration/publication fee is ₹3,000 per team, which includes peer review, publication in the ISBN-registered Conference Proceedings, individual certificates for both members to gain points for your final year VTU evaluation, demo booth, complimentary campus stay (hostel accommodation), all meals, and delegate access to the Cosmic DJ Night. Note: There are no cash prizes for this track as it is an academic publication & credit event.',
     repliedBy: 'Dr. Nagaraj Bhat (Dean R&D, MITK)',
     time: '4 hours ago',
     status: 'Answered'
@@ -1248,7 +1271,7 @@ const CONCLAVE_FAQS = [
   },
   {
     q: 'What is the team size and fee for the VTU 4th-Year Capstone Paper Publication?',
-    a: 'Each team contains strictly 2 members. The publication and registration fee is ₹3,000 per team. Both students receive individualized Certificates of Project Presentation & Publication in the ISBN-registered Proceedings, exhibition stall, food coupons, and entry to DJ Night.'
+    a: 'Each team contains strictly 2 members. The publication and registration fee is ₹3,000 per team. It includes all meals and complimentary campus hostel accommodation (stay) for both members. There are no cash prizes for this academic event; both students receive individualized official Certificates of Project Presentation & Publication in the ISBN-registered Proceedings to gain vital academic & activity points for their final year VTU evaluation, viva, and placements, along with free entry to DJ Night.'
   },
   {
     q: 'Is there a DJ Night at ORBIT 2K26?',

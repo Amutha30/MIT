@@ -1897,6 +1897,30 @@ button, input, select, textarea {
   color: var(--green-accent);
 }
 
+.meta-chip.academic-chip {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+  font-weight: 600;
+}
+.meta-chip.academic-chip i {
+  color: #fbbf24;
+}
+
+.meta-chip.stay-chip {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #c4b5fd;
+  font-weight: 600;
+}
+.meta-chip.stay-chip i {
+  color: #a78bfa;
+}
+
+.modal-span-full {
+  grid-column: 1 / -1;
+}
+
 .highlight-dj-stat {
   border-color: rgba(236, 72, 153, 0.4);
 }

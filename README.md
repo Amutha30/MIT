@@ -8,8 +8,9 @@
 ---
 
 ## 🌌 Conclave Highlights
-- **42-Hour Continuous Flagship Hackathon (HackOrbit):** 42 continuous hours of problem-solving across AI/ML, Web3, Smart Cities, HealthTech & Agritech. (₹75,000 Prize Pool)
-- **VTU 4th-Year Capstone Project Expo & Publication:** Exclusive track for final-year BE/B.Tech students from VTU-affiliated colleges to present projects and receive official publication in **ORBIT 2K26 Conference Proceedings (ISBN registered)** with certificates. (₹35,000 Prize Pool)
+- **42-Hour Continuous Flagship Hackathon (HackOrbit):** 42 continuous hours of problem-solving across AI/ML, Web3, Smart Cities, HealthTech & Agritech. Registration fee: ₹2,500/team. Includes 24/7 lab bays, meals, accommodation, and DJ Night access. (₹75,000 Prize Pool)
+- **VTU 4th-Year Capstone Project Expo & Publication:** Exclusive track for final-year BE/B.Tech students from VTU-affiliated colleges. Strictly 2 members per team (₹3,000/team fee). Includes all meals and complimentary campus hostel stay. Formal publication in **ORBIT 2K26 Conference Proceedings (ISBN registered)** with certificates to gain points for your final year VTU project evaluation & viva (No cash prizes).
+- **Mega Cosmic DJ Night (Oct 10 Grand Finale):** Explosive EDM and musical festival closing out ORBIT 2K26 with celebrity DJs and laser shows. Free entry for all conclave delegates.
 - **DevOrbit (Web-a-thon):** Rapid 5-hour responsive full-stack sprint. (₹25,000 Prize Pool)
 - **AppOrbit (Mobile-a-thon):** Cross-platform & native mobile app development showdown. (₹25,000 Prize Pool)
 - **TechScribe:** National technical paper presentation in IEEE format.
