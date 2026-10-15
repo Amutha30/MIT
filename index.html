@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORBIT 2K26 | Moodlakatte Institute of Technology, Kundapura (MITK)</title>
+  <meta name="description" content="ORBIT 2K26 - Emerging into a New Dimension. The Grand 2-Day National Tech & Cultural Conclave at Moodlakatte Institute of Technology Kundapura (MITK), Udupi, Karnataka on October 9-10, 2026. Featuring 42-Hr Hackathon, Web-a-thon, Mobile-a-thon, VTU 4th Year Project Publication, and Mega Cultural Events.">
+  <meta name="keywords" content="ORBIT 2K26, MIT Kundapura, Moodlakatte Institute of Technology, VTU College Fest, 42-Hour Hackathon, Paper Publication VTU, Webathon, Mobileathon, Udupi, Karnataka Tech Fest">
+  <meta name="author" content="Moodlakatte Institute of Technology, Kundapura">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="ORBIT 2K26 | MIT Kundapura - Emerging into a New Dimension">
+  <meta property="og:description" content="National Level 2-Day Tech & Cultural Fest on Oct 9-10, 2026 at Moodlakatte Institute of Technology, Kundapura, Udupi, Karnataka.">
+  <meta property="og:image" content="assets/orbit_key_art.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/mit_logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Canvas for Interactive Space Particles -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="mainNavbar">
+    <div class="nav-container">
+      <a href="#slide-mit" class="nav-brand">
+        <img src="assets/mit_logo.png" alt="MIT Kundapura Official Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="brand-title">MIT KUNDAPURA</span>
+          <span class="brand-sub">Moodlakatte, Udupi</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#slide-mit" class="nav-link active" data-nav="slide-mit">MIT Kundapura</a>
+        <a href="#slide-orbit" class="nav-link" data-nav="slide-orbit">ORBIT 2K26</a>
+        <a href="#events-section" class="nav-link" data-nav="events-section">All Events</a>
+        <a href="#vtu-spotlight" class="nav-link highlight" data-nav="vtu-spotlight">VTU Capstone Expo</a>
+        <a href="#schedule-section" class="nav-link" data-nav="schedule-section">Schedule</a>
+        <a href="#venue-section" class="nav-link" data-nav="venue-section">Venue & Reach</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle Sound Effects" title="Toggle Futuristic Sound Effects">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <a href="#events-section" class="btn btn-sm btn-primary glow-effect">
+          <span>Register Now</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slide Progression Indicator (Floating Right) -->
+  <div class="slide-dots-nav" id="slideDotsNav">
+    <a href="#slide-mit" class="dot-item active" data-slide="0" title="Slide 1: MIT Kundapura">
+      <span class="dot-label">01 MITK</span>
+      <span class="dot-pip"></span>
+    </a>
+    <a href="#slide-orbit" class="dot-item" data-slide="1" title="Slide 2: ORBIT 2K26">
+      <span class="dot-label">02 ORBIT</span>
+      <span class="dot-pip"></span>
+    </a>
+    <a href="#events-section" class="dot-item" data-slide="2" title="Events Catalog">
+      <span class="dot-label">03 Events</span>
+      <span class="dot-pip"></span>
+    </a>
+    <a href="#vtu-spotlight" class="dot-item" data-slide="3" title="VTU Special">
+      <span class="dot-label">04 VTU Expo</span>
+      <span class="dot-pip"></span>
+    </a>
+    <a href="#schedule-section" class="dot-item" data-slide="4" title="2-Day Schedule">
+      <span class="dot-label">05 Schedule</span>
+      <span class="dot-pip"></span>
+    </a>
+  </div>
+
+  <main>
+    <!-- ======================================================== -->
+    <!-- SLIDE 1: COLLEGE HERO (Blurred Campus Background, Logo, Full Name, Address) -->
+    <!-- ======================================================== -->
+    <section class="slide-section slide-college" id="slide-mit">
+      <!-- High-res college campus background with custom blur & parallax -->
+      <div class="college-bg-wrapper">
+        <img src="assets/campus_building.jpg" alt="Moodlakatte Institute of Technology Kundapura Campus Building" class="college-bg-img" id="collegeBgImg">
+        <div class="college-backdrop-overlay"></div>
+        <div class="cosmic-glow-circle circle-1"></div>
+        <div class="cosmic-glow-circle circle-2"></div>
+      </div>
+
+      <div class="slide-content college-hero-container">
+        <!-- Floating Accreditation Badges -->
+        <div class="college-badges-row">
+          <span class="badge-pill"><i class="fa-solid fa-award"></i> NAAC Accredited</span>
+          <span class="badge-pill"><i class="fa-solid fa-university"></i> Affiliated to VTU Belagavi</span>
+          <span class="badge-pill"><i class="fa-solid fa-check-double"></i> Approved by AICTE, New Delhi</span>
+          <span class="badge-pill"><i class="fa-solid fa-shield-halved"></i> Govt. of Karnataka Recognized</span>
+        </div>
+
+        <!-- Institutional Emblem Card with Frost Glass & Glow -->
+        <div class="institution-card">
+          <div class="logo-orb-wrapper">
+            <div class="logo-orbit-ring ring-outer"></div>
+            <div class="logo-orbit-ring ring-inner"></div>
+            <img src="assets/mit_logo.png" alt="Moodlakatte Institute of Technology Kundapura Emblem" class="institution-logo">
+          </div>
+
+          <div class="institution-text">
+            <span class="motto-tag">ಸತ್ಯಂ ವದ ಧರ್ಮಂ ಚರ | Truth & Virtue</span>
+            <h1 class="college-full-name">
+              Moodlakatte Institute of Technology, Kundapura
+            </h1>
+            <p class="trust-subtitle">
+              Moodlakatte Nagarathna Bhujanga Shetty Trust (Regd.)
+            </p>
+
+            <div class="address-box">
+              <i class="fa-solid fa-location-dot address-pin-icon"></i>
+              <div class="address-details">
+                <span class="address-line">Moodlakatte, Kundapura Taluk, Udupi District, Karnataka – 576217, India</span>
+                <span class="address-landmark"><i class="fa-solid fa-train"></i> Located right opposite Kundapura Railway Station</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Campus Highlights Mini Carousel -->
+        <div class="campus-snapshots">
+          <div class="snapshot-card">
+            <img src="assets/campus_students.jpg" alt="MIT Kundapura Students" class="snapshot-img">
+            <div class="snapshot-caption">
+              <span>Innovation & Student Excellence</span>
+            </div>
+          </div>
+          <div class="snapshot-card">
+            <img src="assets/campus_students_2.jpg" alt="Engineering Minds at MITK" class="snapshot-img">
+            <div class="snapshot-caption">
+              <span>Empowering Future Technologists</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Down to Slide 2 Prompt -->
+        <div class="scroll-to-next">
+          <span class="scroll-hint-text">SCROLL TO ENTER</span>
+          <a href="#slide-orbit" class="scroll-cta-pill" id="scrollDownBtn" aria-label="Enter ORBIT 2K26">
+            <span class="pill-event-title">ORBIT 2K26</span>
+            <span class="pill-tagline">Emerging into a New Dimension</span>
+            <i class="fa-solid fa-angles-down scroll-arrow-icon"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- SLIDE 2: ORBIT 2K26 HERO (Emerging into a New Dimension) -->
+    <!-- ======================================================== -->
+    <section class="slide-section slide-orbit" id="slide-orbit">
+      <!-- 3D Orbital Canvas Ring Layer -->
+      <div class="orbit-space-background">
+        <div class="nebula-mist"></div>
+        <div class="orbital-rings-system">
+          <div class="orbit-disc ring-1"></div>
+          <div class="orbit-disc ring-2"></div>
+          <div class="orbit-disc ring-3"></div>
+          <div class="dimension-portal-core"></div>
+        </div>
+      </div>
+
+      <div class="slide-content orbit-hero-container">
+        <!-- Event Top Meta -->
+        <div class="orbit-edition-pill">
+          <span class="edition-dot"></span>
+          <span>ANNUAL NATIONAL TECH & CULTURAL CONCLAVE • 2026</span>
+          <span class="edition-dates"><i class="fa-regular fa-calendar"></i> OCT 9 & 10, 2026</span>
+        </div>
+
+        <!-- Main Grand Title -->
+        <div class="orbit-title-block">
+          <div class="title-overhead">MOODLAKATTE INSTITUTE OF TECHNOLOGY PRESENTS</div>
+          <h2 class="orbit-glitch-title" data-text="ORBIT 2K26">ORBIT 2K26</h2>
+          <div class="orbit-dimension-tagline">
+            <span class="dimension-bracket">[</span>
+            <span class="dimension-text">EMERGING INTO A NEW DIMENSION</span>
+            <span class="dimension-bracket">]</span>
+          </div>
+          <p class="orbit-hero-desc">
+            A 2-day monumental convergence of cybernetic innovation, intense hackathon battles, breakthrough VTU engineering research, and electrifying cultural showdowns across dimensions.
+          </p>
+        </div>
+
+        <!-- Live Countdown Timer -->
+        <div class="countdown-container">
+          <div class="countdown-heading">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <span>DIMENSION GATE OPENS IN</span>
+          </div>
+          <div class="countdown-grid" id="countdownGrid">
+            <div class="countdown-box">
+              <span class="countdown-number" id="cdDays">00</span>
+              <span class="countdown-label">DAYS</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-box">
+              <span class="countdown-number" id="cdHours">00</span>
+              <span class="countdown-label">HOURS</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-box">
+              <span class="countdown-number" id="cdMinutes">00</span>
+              <span class="countdown-label">MINUTES</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-box">
+              <span class="countdown-number" id="cdSeconds">00</span>
+              <span class="countdown-label">SECONDS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fast Stats Highlight Row -->
+        <div class="orbit-stats-bar">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-stopwatch-20"></i></div>
+            <div class="stat-info">
+              <span class="stat-value">42 HOURS</span>
+              <span class="stat-name">Non-Stop Flagship Hackathon</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div class="stat-info">
+              <span class="stat-value">₹2,50,000+</span>
+              <span class="stat-name">Cash Prizes & Grants</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="stat-info">
+              <span class="stat-value">VTU SPECIAL</span>
+              <span class="stat-name">4th Year Capstone Publication</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="stat-info">
+              <span class="stat-value">15+ EVENTS</span>
+              <span class="stat-name">Tech & Cultural Arenas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick CTAs -->
+        <div class="orbit-cta-group">
+          <a href="#events-section" class="btn btn-lg btn-primary glow-strong" id="heroExploreBtn">
+            <i class="fa-solid fa-compass"></i>
+            <span>Explore All Events</span>
+          </a>
+          <button class="btn btn-lg btn-secondary" onclick="openRegistrationModal('hackorbit')">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Register for 42-Hr Hackathon</span>
+          </button>
+          <a href="#vtu-spotlight" class="btn btn-lg btn-outline-cyan">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>VTU Paper Publication</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VTU CAPSTONE PROJECT & PUBLICATION SPECIAL SPOTLIGHT -->
+    <!-- ======================================================== -->
+    <section class="vtu-spotlight-section" id="vtu-spotlight">
+      <div class="section-container">
+        <div class="vtu-banner-card">
+          <div class="vtu-glow-accent"></div>
+          <div class="vtu-card-content">
+            <div class="vtu-badge-strip">
+              <span class="vtu-pill"><i class="fa-solid fa-star"></i> EXCLUSIVE SPOTLIGHT FOR 4TH YEAR STUDENTS</span>
+              <span class="vtu-univ">VISVESVARAYA TECHNOLOGICAL UNIVERSITY (VTU) AFFILIATED COLLEGES</span>
+            </div>
+            
+            <h3 class="vtu-title">
+              National Capstone Project Presentation & Publication Conclave
+            </h3>
+            
+            <p class="vtu-description">
+              Calling all <strong>final year (4th Year BE / B.Tech) students</strong> from VTU-affiliated institutions! Don’t let your capstone innovation stay inside your report binder. Present your final year projects before an esteemed jury of VTU academicians, researchers, and leading tech industry leaders, and get your project formally published in the <strong>ORBIT 2K26 Conference Proceedings (ISBN registered)</strong> along with official certificates and awards!
+            </p>
+
+            <div class="vtu-perks-grid">
+              <div class="vtu-perk">
+                <div class="perk-icon"><i class="fa-solid fa-certificate"></i></div>
+                <div class="perk-text">
+                  <h4>Official Publication Certificate</h4>
+                  <p>Every presented paper receives an official Certificate of Project Publication, boosting placements & higher studies applications.</p>
+                </div>
+              </div>
+
+              <div class="vtu-perk">
+                <div class="perk-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+                <div class="perk-text">
+                  <h4>ISBN Registered Proceedings</h4>
+                  <p>Inclusion in peer-reviewed compendium with verified Digital Object Identifiers and citation indices.</p>
+                </div>
+              </div>
+
+              <div class="vtu-perk">
+                <div class="perk-icon"><i class="fa-solid fa-medal"></i></div>
+                <div class="perk-text">
+                  <h4>Best Project Awards & ₹35,000 Cash</h4>
+                  <p>Category trophies across CSE/ISE, ECE, AI&DS, Mechanical, and Civil Engineering streams.</p>
+                </div>
+              </div>
+
+              <div class="vtu-perk">
+                <div class="perk-icon"><i class="fa-solid fa-building-user"></i></div>
+                <div class="perk-text">
+                  <h4>Direct Industry Evaluation</h4>
+                  <p>Spotlight exhibition stall for hardware & software prototypes with recruiter talent scouts.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="vtu-cta-row">
+              <button class="btn btn-primary glow-cyan" onclick="openRegistrationModal('vtu-paper')">
+                <i class="fa-solid fa-file-arrow-up"></i>
+                <span>Submit 4th Year Project Paper</span>
+              </button>
+              <button class="btn btn-outline" onclick="openEventDetails('vtu-paper')">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>View Guidelines & IEEE Format</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- EVENTS DIRECTORY SECTION (Technical & Non-Technical) -->
+    <!-- ======================================================== -->
+    <section class="events-section" id="events-section">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <span class="section-eyebrow"><i class="fa-solid fa-microchip"></i> CONCLAVE TRACKS</span>
+          <h2 class="section-heading">ORBIT 2K26 Events Arena</h2>
+          <p class="section-subtext">
+            Compete, innovate, code, and perform across 15+ premier technical challenges and adrenaline-fueled non-technical spectacles.
+          </p>
+        </div>
+
+        <!-- Controls: Category Filters & Search -->
+        <div class="events-control-bar">
+          <div class="category-filters" id="categoryFilters">
+            <button class="filter-pill active" data-category="all">
+              <i class="fa-solid fa-border-all"></i> All Arenas (15)
+            </button>
+            <button class="filter-pill" data-category="technical">
+              <i class="fa-solid fa-code"></i> Technical (7)
+            </button>
+            <button class="filter-pill" data-category="non-technical">
+              <i class="fa-solid fa-masks-theater"></i> Non-Technical (8)
+            </button>
+            <button class="filter-pill" data-category="hackathon">
+              <i class="fa-solid fa-laptop-code"></i> 42-Hr Hackathon
+            </button>
+            <button class="filter-pill" data-category="vtu">
+              <i class="fa-solid fa-graduation-cap"></i> VTU 4th Year Special
+            </button>
+            <button class="filter-pill" data-category="gaming">
+              <i class="fa-solid fa-gamepad"></i> E-Sports & Gaming
+            </button>
+          </div>
+
+          <div class="event-search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="eventSearchInput" class="event-search-input" placeholder="Search events by name, track or prize...">
+            <button id="clearSearchBtn" class="clear-search-btn" aria-label="Clear Search"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <!-- Events Grid (Rendered dynamically by JavaScript) -->
+        <div class="events-grid" id="eventsGrid">
+          <!-- Dynamic event cards inserted here -->
+        </div>
+
+        <!-- No Results Fallback -->
+        <div class="no-results-state hidden" id="noResultsState">
+          <i class="fa-solid fa-compass-slash"></i>
+          <h3>No events found in this dimension</h3>
+          <p>Try refining your search keyword or clearing filters.</p>
+          <button class="btn btn-secondary btn-sm" id="resetFiltersBtn">Reset Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 2-DAY EVENT SCHEDULE / TIMELINE SECTION -->
+    <!-- ======================================================== -->
+    <section class="schedule-section" id="schedule-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow"><i class="fa-regular fa-clock"></i> MISSION TIMELINE</span>
+          <h2 class="section-heading">2-Day Event Itinerary</h2>
+          <p class="section-subtext">October 9th & 10th, 2026 • Moodlakatte Institute of Technology Campus</p>
+        </div>
+
+        <!-- Day Selector Tabs -->
+        <div class="day-tabs-wrapper">
+          <button class="day-tab-btn active" data-day="day1" id="tabDay1">
+            <div class="day-tab-inner">
+              <span class="day-number">DAY 01</span>
+              <span class="day-date">Friday, October 9, 2026</span>
+              <span class="day-tag">Inauguration • 42h Hackathon Kickoff • Webathon • VTU Expo</span>
+            </div>
+          </button>
+          <button class="day-tab-btn" data-day="day2" id="tabDay2">
+            <div class="day-tab-inner">
+              <span class="day-number">DAY 02</span>
+              <span class="day-date">Saturday, October 10, 2026</span>
+              <span class="day-tag">Mobileathon • Hackathon Finale • E-Sports • Cultural Night</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Timeline Schedule Container -->
+        <div class="timeline-container" id="timelineContainer">
+          <!-- Day 1 Schedule List -->
+          <div class="timeline-day active" id="day1Schedule">
+            <div class="timeline-item">
+              <div class="timeline-time">08:30 AM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge registration">Welcome & Check-in</span>
+                <h4>Delegate Check-In & Swag Kit Distribution</h4>
+                <p>Welcome desk opens at MITK Main Entrance. Collect ID badges, participant kits, meal coupons, and Wi-Fi access passes.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Administrative Block Foyer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item highlight-item">
+              <div class="timeline-time">09:30 AM</div>
+              <div class="timeline-marker"><div class="marker-dot pulse"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge ceremonial">Ceremony</span>
+                <h4>Grand Inaugural Ceremony of ORBIT 2K26</h4>
+                <p>Traditional lamp lighting, keynote addresses by VTU dignitaries, Principal’s address, and unveiling of the 2-day conclave theme: <em>Emerging into a New Dimension</em>.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Dr. Jayaram Shetty Memorial Auditorium</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item highlight-hackathon">
+              <div class="timeline-time">11:00 AM</div>
+              <div class="timeline-marker"><div class="marker-dot hackathon-pulse"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge hackathon">⚡ Flagship Highlight</span>
+                <h4>HackOrbit: 42-Hour National Hackathon Begins!</h4>
+                <p>The 42-hour continuous countdown starts! Teams are assigned hacker bays with gigabit connectivity, power strips, and mentor access across 5 problem statement tracks.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Central Computing Center (Lab 1 & 2)</span>
+                  <span><i class="fa-solid fa-hourglass-half"></i> 42 Continuous Hours</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">11:30 AM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge vtu">VTU Special</span>
+                <h4>VTU 4th-Year Capstone Project Presentation (Track A)</h4>
+                <p>Final year engineering teams present their working prototypes and research papers before the VTU evaluation jury panel.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Seminar Hall 1 & Exhibition Pavilion</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">02:00 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge technical">Technical</span>
+                <h4>DevOrbit: Web-a-thon Sprint</h4>
+                <p>Rapid full-stack responsive development sprint. Teams build real-time dynamic web apps solving assigned societal and campus challenges.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Software Innovation Hub</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">03:30 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge nontech">Non-Technical</span>
+                <h4>BrainOrbit: Mega Trivia & Pop Culture Quiz (Prelims)</h4>
+                <p>Written qualifier round covering tech legends, sci-fi movies, anime, global headlines, and mind-bending riddles.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Lecture Hall Complex</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">05:00 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge nontech">Fun & Adventure</span>
+                <h4>CosmoQuest: Mega Campus Treasure Hunt (Round 1)</h4>
+                <p>Deciphering encrypted geo-coordinates and cryptographic riddles spread across the 20-acre lush green MITK campus grounds.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Campus Courtyard & Grounds</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">07:30 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge cultural">Cultural Fiesta</span>
+                <h4>RhythmOrbit: Battle of the Bands & Acoustic Night</h4>
+                <p>Collegiate rock bands, fusion musicians, and solo acoustic voices ignite the evening under the coastal Karnataka night sky.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> MITK Open Air Amphitheatre</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">11:00 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge hackathon">Hackathon Milestone</span>
+                <h4>HackOrbit Midnight Checkpoint & Midnight Snacks</h4>
+                <p>First round of mentor evaluations, code commits review, and midnight energy fuel (hot snacks, red bull, coffee).</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Computing Center Lounge</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 2 Schedule List -->
+          <div class="timeline-day" id="day2Schedule">
+            <div class="timeline-item">
+              <div class="timeline-time">08:00 AM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge hackathon">Hackathon</span>
+                <h4>HackOrbit Breakfast & Second Mentor Review</h4>
+                <p>Nutritious breakfast served for 42-hour warriors. Final feature sprint and mock pitching review before the afternoon finale.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> College Food Court & Labs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">09:30 AM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge technical">Technical</span>
+                <h4>AppOrbit: Mobile-a-thon App Showcase</h4>
+                <p>Cross-platform Flutter & React Native app development showdown. Live device mirroring on high-definition projector screens.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> App Development Studio</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">10:30 AM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge vtu">VTU Special</span>
+                <h4>VTU 4th-Year Capstone Project Presentation (Track B) & Publication Certification</h4>
+                <p>Second cohort of final year projects presentation and conferment of official publication acceptance certificates.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Seminar Hall 2</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">01:00 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge gaming">E-Sports Arena</span>
+                <h4>BGMI & Valorant Grand Finals</h4>
+                <p>High-stakes 5v5 Valorant & 4-man BGMI battle royale LAN showdown with live shoutcasting on the auditorium big screen.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> MITK Main Auditorium Stage</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-time">03:00 PM</div>
+              <div class="timeline-marker"><div class="marker-dot"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge cultural">Cultural</span>
+                <h4>Step Up: Street Dance Battle & PixelCraft Showcase</h4>
+                <p>Solo & crew freestyle dance battle, followed by screening of winning short films from PixelCraft.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Campus Amphitheatre</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item highlight-hackathon">
+              <div class="timeline-time">05:00 PM</div>
+              <div class="timeline-marker"><div class="marker-dot hackathon-pulse"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge hackathon">⚡ 42-Hour Hack Closes</span>
+                <h4>HackOrbit Grand Jury Pitches & Live Demos</h4>
+                <p>Pencils down! Final top 10 hackathon teams pitch live to venture capitalists and senior tech architects on the main stage.</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> Main Auditorium</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item highlight-item">
+              <div class="timeline-time">06:30 PM</div>
+              <div class="timeline-marker"><div class="marker-dot pulse"></div></div>
+              <div class="timeline-card">
+                <span class="timeline-badge ceremonial">Grand Finale</span>
+                <h4>Grand Valedictory, Prize Distribution & ORBIT Afterparty</h4>
+                <p>Awarding ₹2,50,000+ prize pool, trophies, VTU Capstone certificates, felicitation of sponsors, and the grand ORBIT 2K26 celebration!</p>
+                <div class="timeline-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> MITK Main Stage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VENUE, CAMPUS & CONNECTIVITY GUIDE -->
+    <!-- ======================================================== -->
+    <section class="venue-section" id="venue-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow"><i class="fa-solid fa-location-crosshairs"></i> HOST INSTITUTION</span>
+          <h2 class="section-heading">Campus Venue & How to Reach</h2>
+          <p class="section-subtext">Moodlakatte Institute of Technology Kundapura (MITK), Udupi District, Karnataka</p>
+        </div>
+
+        <div class="venue-grid">
+          <!-- Campus Info Card -->
+          <div class="venue-card campus-overview-card">
+            <div class="venue-img-wrap">
+              <img src="assets/campus_building.jpg" alt="MIT Kundapura Campus Building" class="venue-card-img">
+              <div class="venue-img-badge">Moodlakatte, Kundapura</div>
+            </div>
+            <div class="venue-card-body">
+              <h3 class="venue-name">Moodlakatte Institute of Technology (MITK)</h3>
+              <p class="venue-desc">
+                Nestled amidst the serene greenery of coastal Karnataka, MIT Kundapura is an acclaimed center of excellence in engineering education and research, affiliated to VTU Belagavi.
+              </p>
+
+              <div class="venue-perks-list">
+                <div class="perk-bullet"><i class="fa-solid fa-wifi"></i> 1 Gbps High-Speed Fest Wi-Fi</div>
+                <div class="perk-bullet"><i class="fa-solid fa-bed"></i> Separate Accommodation for Outstation Teams</div>
+                <div class="perk-bullet"><i class="fa-solid fa-utensils"></i> Free Meals & Cafeteria for 42h Hackathoners</div>
+                <div class="perk-bullet"><i class="fa-solid fa-charging-station"></i> 24x7 Lab Power & Hardware Stations</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transit Guide -->
+          <div class="venue-card transit-guide-card">
+            <h3 class="transit-title"><i class="fa-solid fa-compass"></i> Travel & Transit Options</h3>
+            
+            <div class="transit-item highlight-transit">
+              <div class="transit-icon"><i class="fa-solid fa-train"></i></div>
+              <div class="transit-content">
+                <h4>By Train (Direct Access)</h4>
+                <p><strong>Kundapura Railway Station (KUDA)</strong> is located directly opposite the college campus (less than 200 meters walking distance!). Direct trains available from Bengaluru, Mangaluru, Mumbai, Goa, and Kerala.</p>
+              </div>
+            </div>
+
+            <div class="transit-item">
+              <div class="transit-icon"><i class="fa-solid fa-bus"></i></div>
+              <div class="transit-content">
+                <h4>By Bus (KSRTC & Private)</h4>
+                <p>Kundapura KSRTC and Private Bus Stand are located 3.5 km from the campus. Regular college shuttle buses, autos, and local town buses connect every 10 minutes.</p>
+              </div>
+            </div>
+
+            <div class="transit-item">
+              <div class="transit-icon"><i class="fa-solid fa-plane"></i></div>
+              <div class="transit-content">
+                <h4>By Air</h4>
+                <p><strong>Mangaluru International Airport (IXE)</strong> is 92 km away (approx. 1.5 hours drive via NH-66). Taxis and express buses are readily accessible.</p>
+              </div>
+            </div>
+
+            <div class="transit-actions">
+              <a href="https://maps.google.com/?q=Moodlakatte+Institute+of+Technology+Kundapura" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Open in Google Maps</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODALS: EVENT DETAILS & REGISTRATION -->
+  <!-- ======================================================== -->
+
+  <!-- Event Details Modal -->
+  <div class="modal-overlay" id="eventModalOverlay">
+    <div class="modal-container" id="eventModalContainer">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-category-badge" id="modalCategoryBadge">Technical</div>
+        <h3 class="modal-title" id="modalTitle">Event Title</h3>
+        <p class="modal-tagline" id="modalTagline">Event Tagline</p>
+      </div>
+
+      <div class="modal-body" id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modalCloseActionBtn">Close</button>
+        <button class="btn btn-primary glow-cyan" id="modalRegisterActionBtn">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span>Register for this Event</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration Form Modal -->
+  <div class="modal-overlay" id="regModalOverlay">
+    <div class="modal-container modal-reg-size" id="regModalContainer">
+      <button class="modal-close-btn" id="regModalCloseBtn" aria-label="Close Registration">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-category-badge" id="regEventBadge">ORBIT 2K26 Registration</div>
+        <h3 class="modal-title" id="regEventTitle">Register for Event</h3>
+        <p class="modal-tagline">Moodlakatte Institute of Technology Kundapura • October 9-10, 2026</p>
+      </div>
+
+      <div class="modal-body">
+        <form id="registrationForm" class="reg-form" novalidate>
+          <input type="hidden" id="selectedEventId" name="selectedEventId" value="">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="teamLeadName">Team Leader / Participant Full Name <span class="req">*</span></label>
+              <input type="text" id="teamLeadName" name="teamLeadName" placeholder="e.g. Rahul Sharma" required>
+            </div>
+            <div class="form-group">
+              <label for="participantEmail">Official Email ID <span class="req">*</span></label>
+              <input type="email" id="participantEmail" name="participantEmail" placeholder="e.g. rahul@college.edu.in" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="participantPhone">WhatsApp Contact Number <span class="req">*</span></label>
+              <input type="tel" id="participantPhone" name="participantPhone" placeholder="e.g. 9876543210" required>
+            </div>
+            <div class="form-group">
+              <label for="studentUsn">University Seat Number (USN / Roll No) <span class="req">*</span></label>
+              <input type="text" id="studentUsn" name="studentUsn" placeholder="e.g. 4MK23CS001" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="collegeName">College / Institute Name <span class="req">*</span></label>
+              <input type="text" id="collegeName" name="collegeName" list="collegeSuggestions" placeholder="e.g. Moodlakatte Institute of Technology Kundapura" required>
+              <datalist id="collegeSuggestions">
+                <option value="Moodlakatte Institute of Technology, Kundapura (MITK)">
+                <option value="NMAM Institute of Technology, Nitte">
+                <option value="Canara Engineering College, Mangaluru">
+                <option value="Sahyadri College of Engineering, Mangaluru">
+                <option value="Mangalore Institute of Technology & Engineering (MITE)">
+                <option value="Alva's Institute of Engineering & Technology">
+                <option value="St. Joseph Engineering College, Vamanjoor">
+                <option value="K.V.G. College of Engineering, Sullia">
+                <option value="B.M.S. College of Engineering, Bengaluru">
+                <option value="R.V. College of Engineering, Bengaluru">
+                <option value="MS Ramaiah Institute of Technology, Bengaluru">
+                <option value="Visvesvaraya Technological University (VTU), Belagavi">
+              </datalist>
+            </div>
+            <div class="form-group">
+              <label for="academicYear">Year of Study <span class="req">*</span></label>
+              <select id="academicYear" name="academicYear" required>
+                <option value="">Select Study Year</option>
+                <option value="1st Year">1st Year (BE/B.Tech)</option>
+                <option value="2nd Year">2nd Year (BE/B.Tech)</option>
+                <option value="3rd Year">3rd Year (BE/B.Tech)</option>
+                <option value="4th Year (Final Year)" selected>4th Year (Final Year BE/B.Tech)</option>
+                <option value="Postgraduate (M.Tech/MCA/MBA)">Postgraduate (M.Tech/MCA/MBA)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Team Member Details -->
+          <div class="form-group">
+            <label for="teamSize">Number of Team Members (Including Leader)</label>
+            <select id="teamSize" name="teamSize">
+              <option value="1">1 (Individual Participant)</option>
+              <option value="2">2 Members</option>
+              <option value="3">3 Members</option>
+              <option value="4" selected>4 Members (Hackathon / Team Max)</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="teamMembersField">
+            <label for="teamMembersList">Team Members' Names & Branches (comma separated)</label>
+            <input type="text" id="teamMembersList" name="teamMembersList" placeholder="e.g. Ananya (CSE), Vikram (ECE), Sneha (AI&DS)">
+          </div>
+
+          <!-- VTU Specific Paper / Capstone Field (shown if VTU or Paper event) -->
+          <div class="vtu-conditional-fields" id="vtuExtraFields">
+            <div class="vtu-field-callout">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>VTU 4th-Year Capstone Project Details (For Certificate & Publication)</span>
+            </div>
+            <div class="form-group">
+              <label for="projectTitle">Final Year Project / Paper Title</label>
+              <input type="text" id="projectTitle" name="projectTitle" placeholder="e.g. Autonomous Edge AI Crop Disease Diagnostic Rover">
+            </div>
+            <div class="form-group">
+              <label for="projectAbstract">Brief Abstract / Summary (100 - 250 words)</label>
+              <textarea id="projectAbstract" name="projectAbstract" rows="3" placeholder="Explain objective, methodology, results and tech stack..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-checkbox-row">
+            <input type="checkbox" id="rulesAgreed" name="rulesAgreed" required>
+            <label for="rulesAgreed">I agree to the code of conduct, event rules of ORBIT 2K26 and confirm all details are authentic.</label>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="regCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary glow-strong" id="submitRegBtn">
+              <i class="fa-solid fa-ticket"></i>
+              <span>Complete Registration & Generate Pass</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital Delegate Pass Preview Modal (Generated on successful registration) -->
+  <div class="modal-overlay" id="ticketModalOverlay">
+    <div class="modal-container ticket-modal-size" id="ticketModalContainer">
+      <button class="modal-close-btn" id="ticketCloseBtn" aria-label="Close Ticket">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="ticket-wrapper" id="printableTicket">
+        <div class="ticket-header">
+          <div class="ticket-brand">
+            <img src="assets/mit_logo.png" alt="MIT Kundapura" class="ticket-logo">
+            <div>
+              <h3>MIT KUNDAPURA</h3>
+              <p>Moodlakatte, Udupi Dist, Karnataka</p>
+            </div>
+          </div>
+          <div class="ticket-badge">CONFIRMED PASS</div>
+        </div>
+
+        <div class="ticket-banner">
+          <h2>ORBIT 2K26</h2>
+          <p>EMERGING INTO A NEW DIMENSION • OCT 9 & 10, 2026</p>
+        </div>
+
+        <div class="ticket-body">
+          <div class="ticket-info-grid">
+            <div class="ticket-info-item">
+              <span class="label">EVENT REGISTERED</span>
+              <span class="value" id="ticketEventName">42-Hour HackOrbit</span>
+            </div>
+            <div class="ticket-info-item">
+              <span class="label">REGISTRATION ID</span>
+              <span class="value highlight-id" id="ticketRegId">ORBIT-26-9042</span>
+            </div>
+            <div class="ticket-info-item">
+              <span class="label">DELEGATE / TEAM LEAD</span>
+              <span class="value" id="ticketDelegateName">Rahul Sharma</span>
+            </div>
+            <div class="ticket-info-item">
+              <span class="label">COLLEGE / INSTITUTION</span>
+              <span class="value" id="ticketCollegeName">Moodlakatte Institute of Technology Kundapura</span>
+            </div>
+            <div class="ticket-info-item">
+              <span class="label">YEAR & USN</span>
+              <span class="value" id="ticketUsn">4th Year • 4MK23CS001</span>
+            </div>
+            <div class="ticket-info-item">
+              <span class="label">VENUE / LOCATION</span>
+              <span class="value">MIT Kundapura Campus, Udupi (Opp. Railway Station)</span>
+            </div>
+          </div>
+
+          <div class="ticket-qr-block">
+            <div class="fake-qr-code">
+              <div class="qr-pattern"></div>
+              <i class="fa-solid fa-qrcode qr-icon"></i>
+            </div>
+            <span class="qr-scan-note">Scan at Entry Desk on Oct 9</span>
+          </div>
+        </div>
+
+        <div class="ticket-footer">
+          <span>VTU Affiliated • NAAC Accredited • AICTE Approved</span>
+          <span>Reporting: 08:30 AM, Oct 9, 2026</span>
+        </div>
+      </div>
+
+      <div class="ticket-actions">
+        <button class="btn btn-secondary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i>
+          <span>Print / Save PDF</span>
+        </button>
+        <button class="btn btn-primary" id="ticketDoneBtn">
+          <i class="fa-solid fa-check"></i>
+          <span>Done & Return to Conclave</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="conclave-footer">
+    <div class="footer-top-glow"></div>
+    <div class="section-container">
+      <div class="footer-main-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo-row">
+            <img src="assets/mit_logo.png" alt="MIT Kundapura" class="footer-logo-img">
+            <div>
+              <h3>Moodlakatte Institute of Technology</h3>
+              <p>Kundapura, Udupi, Karnataka</p>
+            </div>
+          </div>
+          <p class="footer-tagline-text">
+            Affiliated to Visvesvaraya Technological University (VTU) Belagavi, Approved by AICTE New Delhi & Recognized by Govt. of Karnataka. Managed by Moodlakatte Nagarathna Bhujanga Shetty Trust (Regd.)
+          </p>
+          <div class="footer-social-icons">
+            <a href="https://mitk.edu.in" target="_blank" rel="noopener noreferrer" aria-label="Official Website"><i class="fa-solid fa-globe"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>ORBIT 2K26 Arenas</h4>
+          <ul>
+            <li><a href="#events-section" onclick="filterEventsByCategory('hackathon')">42-Hour Hackathon</a></li>
+            <li><a href="#events-section" onclick="filterEventsByCategory('technical')">Web-a-thon & Mobile-a-thon</a></li>
+            <li><a href="#vtu-spotlight">VTU 4th-Year Capstone Publication</a></li>
+            <li><a href="#events-section" onclick="filterEventsByCategory('technical')">TechScribe Paper Presentation</a></li>
+            <li><a href="#events-section" onclick="filterEventsByCategory('gaming')">Valorant & BGMI E-Sports</a></li>
+            <li><a href="#events-section" onclick="filterEventsByCategory('non-technical')">CosmoQuest Treasure Hunt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Conclave Links</h4>
+          <ul>
+            <li><a href="#slide-mit">MIT Kundapura Overview</a></li>
+            <li><a href="#slide-orbit">Theme: New Dimension</a></li>
+            <li><a href="#schedule-section">2-Day Schedule</a></li>
+            <li><a href="#venue-section">Campus Location & Reach</a></li>
+            <li><a href="javascript:void(0)" onclick="openRegistrationModal('hackorbit')">Register Online</a></li>
+            <li><a href="https://mitk.edu.in" target="_blank" rel="noopener noreferrer">Official MITK Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact-col">
+          <h4>Conclave Desk</h4>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Moodlakatte, Kundapura, Udupi District, Karnataka – 576217 (Opp. Railway Station)</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>orbit2k26@mitk.edu.in / principal@mitk.edu.in</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91 8254 237258 / +91 94808 49300</span>
+          </div>
+          <div class="contact-badge">
+            <i class="fa-solid fa-shield-cat"></i>
+            <span>Anti-Ragging & Safe Fest Campus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>© 2026 Moodlakatte Institute of Technology, Kundapura (MITK). All Rights Reserved.</p>
+        <p>ORBIT 2K26: Emerging into a New Dimension | Designed for National Student Excellence</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
